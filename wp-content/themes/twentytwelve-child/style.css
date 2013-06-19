@@ -1,0 +1,32 @@
+/*
+ * Theme Name:     Twenty Twelve Child
+ * Theme URI:      http://example.com/
+ * Description:    Child theme for the Twenty Twelve theme
+ * Author:         Karl Monaghan 
+ * Author URI:     http://karlmonaghan.com/about/
+ * Template:       twentytwelve                             
+ * Version:        0.1.0
+ * */
+
+@import url("../twentytwelve/style.css");
+
+body {
+    background-color: white;
+}
+
+body .site {
+    box-shadow: none;
+    margin-top: 0px;
+}
+
+.site-header {
+    padding: 1rem 0;
+}
+
+.widget-area {
+    min-width: 320px;
+}
+
+.widget-area #s {
+    width: 73%;
+}
