@@ -35,21 +35,28 @@
 <body <?php body_class(); ?>>
 <div id="page" class="hfeed site">
 	<header id="masthead" class="site-header" role="banner">
-        <center>
+        <center class="hide-small">
 <script type="text/javascript"><!--
+var width = window.innerWidth || document.documentElement.clientWidth;
+if (width >= 800) {
 google_ad_client = "ca-pub-1189639444988756";
 /* TaxCalc Leaderboard */
 google_ad_slot = "1652234392";
 google_ad_width = 728;
 google_ad_height = 90;
+}
 //-->
 </script>
 <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script>
         </center>
-        <center>
-			<img src="/images/header_logo.png" alt="Broadsheet.ie" width="624" height="127" />
-		</center>
+        <center class="hide-small">
+            <a href="/"><img src="/images/header_logo.png" alt="Broadsheet.ie" width="624" height="127" /></a>
+            <img src="/images/Chompsky_163x127.png" alt="Broadsheet.ie" width="163" height="127" />
+        </center>
+        <center class="show-small hide-large">
+            <a href="/"><img src="/images/Chompsky_163x127.png" alt="Broadsheet.ie" width="163" height="127" /></a>
+        </center>
 	</header><!-- #masthead -->
 
 	<div id="main" class="wrapper">

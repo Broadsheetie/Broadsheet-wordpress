@@ -23,8 +23,24 @@ body .site {
     padding: 1rem 0;
 }
 
+@media screen and (max-width: 680px) {
+    .show-small {
+        display: block;
+    }
+
+    .hide-small {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .hide-large {
+        display: none;
+    }
+}
+
 .widget-area {
-    min-width: 320px;
+    min-width: 300px;
 }
 
 .widget-area #s {
