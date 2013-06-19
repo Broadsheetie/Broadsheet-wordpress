@@ -1,0 +1,418 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Gravatar\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/gravatar-signup-encouragement\n"
+"POT-Creation-Date: 2011-09-15 16:10:01+00:00\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Milan Dinić <milan@srpski.biz>\n"
+"Language-Team: Milan <milan@srpski.biz>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;_x\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: C:\\xampp\\htdocs\\tests\\wp-test\\wp-content\\plugins\\gravatar-signup-encouragment\n"
+
+#: settings.php:35
+msgid "Don&#8220;t know how to use this? <a href=\"%s\" class=\"thickbox\">Watch video tutorial</a>."
+msgstr "Не знате како да користите ово? <a href=\"%s\" class=\"thickbox\">Погледајте видео упутство</a>."
+
+#: settings.php:45
+msgid "Choose where to show Gravatar Signup Encouragement message"
+msgstr "Изаберите где желите да прикажете поруку за подстицај учлањивања на Граватар"
+
+#: settings.php:50
+#: settings.php:448
+#: settings.php:459
+msgid "Comment form (unregistered users)"
+msgstr "Образац за коментаре (нерегистровани корисници)"
+
+#: settings.php:50
+#: settings.php:84
+msgid "Message shown below comment text field on a Twenty Eleven theme"
+msgstr "Порука приказна испод поља за унос коментара теме Twenty Eleven"
+
+#: settings.php:50
+#: settings.php:84
+#: settings.php:116
+#: settings.php:121
+#: settings.php:128
+#: settings.php:134
+#: settings.php:139
+#: settings.php:174
+#: settings.php:197
+#: settings.php:221
+msgid "example of how this looks"
+msgstr "пример како ово изгледа"
+
+#: settings.php:53
+#: settings.php:87
+msgid "Choose the comment form element or text field to display the Gravatar Signup Encouragement message below it"
+msgstr "Изаберите поље за унос текста или елемент у обрасцу за коментаре испод ког желите да прикажете поруку за подстицај учлањивања на Граватар"
+
+#: settings.php:61
+#: settings.php:95
+msgid "Notice: Theme you are using doesn't fully follow WordPress theme standards so some of predefined fields in comment form might not work. You can add custom element to make it work. Read <a href='%s' class='thickbox'>here</a> for more information."
+msgstr "Напомена: тема коју користите не прати у потпуности стандарде за Вордпресову тему тако да неки од унапред одређених елемената у обрасцу за коментар можда неће да раде. Можете додати прилагођени елемент да би прорадило. Прочитајте <a href='%s' class='thickbox'>овде</a> за више података."
+
+#: settings.php:68
+#: settings.php:102
+#: settings.php:461
+#: settings.php:469
+msgid "Comment text"
+msgstr "Текст коментара"
+
+#: settings.php:70
+#: settings.php:450
+#: settings.php:462
+msgid "URL"
+msgstr "URL"
+
+#: settings.php:72
+#: settings.php:156
+#: settings.php:180
+#: settings.php:203
+#: settings.php:451
+#: settings.php:463
+msgid "E-mail address"
+msgstr "Адреса е-поште"
+
+#: settings.php:75
+#: settings.php:107
+#: settings.php:186
+#: settings.php:209
+#: settings.php:236
+#: settings.php:464
+#: settings.php:471
+msgid "Submit button"
+msgstr "Дугме за слање"
+
+#: settings.php:78
+#: settings.php:110
+#: settings.php:168
+#: settings.php:189
+#: settings.php:212
+#: settings.php:239
+msgid "Custom element:"
+msgstr "Прилагођени елемент:"
+
+#: settings.php:78
+#: settings.php:110
+#: settings.php:168
+#: settings.php:189
+msgid "Use <a href=\"http://api.jquery.com/category/selectors/\" target=\"_blank\">jQuery selectors</a> to choose any element on a page"
+msgstr "Користите <a href=\"http://api.jquery.com/category/selectors/\" target=\"_blank\">jQuery бираче</a> да бисте одабрали било који елемент странице"
+
+#: settings.php:84
+#: settings.php:467
+msgid "Comment form (registered users)"
+msgstr "Образац за коментаре (регистровани корисници)"
+
+#: settings.php:104
+#: settings.php:470
+msgid "Logout URL"
+msgstr "URL за одјаву"
+
+#: settings.php:116
+msgid "Dialog after comment posting (unregistered users)"
+msgstr "Дијалог након предаје коментара (нерегистровани корисници)"
+
+#: settings.php:116
+#: settings.php:121
+msgid "Message shown in a dialog over a Twenty Eleven theme after comment is posted"
+msgstr "Порука приказна у дијалогу преко Twenty Eleven теме након што је коментар објављен"
+
+#: settings.php:121
+msgid "Dialog after comment posting (registered users)"
+msgstr "Дијалог након предаје коментара (регистровани корисници)"
+
+#: settings.php:128
+msgid "Admin bar"
+msgstr "Управљачка трака"
+
+#: settings.php:128
+msgid "Message shown in admin bar"
+msgstr "Порука приказана на управљачкој траци"
+
+#: settings.php:134
+msgid "Administration notice"
+msgstr "Управљачке напомене"
+
+#: settings.php:134
+msgid "Message shown in administration notices"
+msgstr "Порука приказана у управљачким напоменама"
+
+#: settings.php:139
+msgid "Profile page"
+msgstr "Страница профила"
+
+#: settings.php:139
+msgid "Message shown on a profile page below “Profile” header"
+msgstr "Порука приказана на страници профила испод заглавља „Профил“"
+
+#: settings.php:142
+msgid "Choose the profile page form element or text field to display the Gravatar Signup Encouragement message below it"
+msgstr "Изаберите поље за унос текста или елемент странице профила испод ког желите да прикажете поруку за подстицај учлањивања на Граватар"
+
+#: settings.php:145
+msgid "Header &#8220;Profile&#8221;"
+msgstr "Заглавље &#0132;Профил&#0147;"
+
+#: settings.php:148
+msgid "Header &#8220;Name&#8221;"
+msgstr "Заглавље &#0132;Име&#0147;"
+
+#: settings.php:151
+#: settings.php:183
+#: settings.php:206
+msgid "User name"
+msgstr "Корисничко име"
+
+#: settings.php:153
+msgid "Nicename"
+msgstr "Име за приказивање"
+
+#: settings.php:159
+msgid "Header &#8220;About Yourself&#8221;"
+msgstr "Заглавље &#0132;О вама&#0147;"
+
+#: settings.php:162
+msgid "Biographical Info"
+msgstr "Биографски подаци"
+
+#: settings.php:165
+msgid "Last input field (by default, &#8220;New Password&#8221;)"
+msgstr "Последње поље за унос (подразумевано, &#0132;Нова лозинка&#0147;)"
+
+#: settings.php:174
+msgid "Registration page"
+msgstr "Страница за регистрацију"
+
+#: settings.php:174
+msgid "Message shown on a registration page below e-mail address text field"
+msgstr "Порука приказана на страници за регистровање испод поља за унос адресе е-поште"
+
+#: settings.php:177
+msgid "Choose the registration page form element or text field to display the Gravatar Signup Encouragement message below it"
+msgstr "Изаберите поље за унос текста или елемент странице за регистровање испод ког желите да прикажете поруку за подстицај учлањивања на Граватар"
+
+#: settings.php:197
+msgid "Signup page (multisite)"
+msgstr "Страница за отварање налога (вишеместа)"
+
+#: settings.php:197
+msgid "Message shown on a registration page (multisite) on a Twenty Ten theme below e-mail address text field"
+msgstr "Порука приказна на страници за регистрацију (вишеместа) испод поља за унос адресе е-поште теме Twenty Ten"
+
+#: settings.php:200
+msgid "Choose the (multisite) registration page form element or text field to display the Gravatar Signup Encouragement message below it"
+msgstr "Изаберите поље за унос текста или елемент странице за регистровање (вишеместа) испод ког желите да прикажете поруку за подстицај учлањивања на Граватар"
+
+#: settings.php:221
+msgid "bbPress reply form"
+msgstr "Образац за унос одговора у bbPress-у"
+
+#: settings.php:221
+msgid "Message shown in a bbPress reply form of a Twenty Eleven theme below form title"
+msgstr "Порука приказна у обрасцу за унос одговора у bbPress-у Twenty Eleven теме испод наслова обрасца"
+
+#: settings.php:224
+msgid "Choose the bbPress reply form element or text field to display the Gravatar Signup Encouragement message below it"
+msgstr "Изаберите елемент или поље за унос текста обрасца за унос одговора у bbPress-у испод ког желите да прикажете поруку за подстицај учлањивања на Граватар"
+
+#: settings.php:227
+msgid "Form title"
+msgstr "Наслов обрасца"
+
+#: settings.php:230
+msgid "Topic tags"
+msgstr "Ознаке теме"
+
+#: settings.php:233
+msgid "Last input field"
+msgstr "Последње поље за унос"
+
+#: settings.php:251
+#: settings.php:267
+msgid "There are new options for Gravatar Signup Encouragement."
+msgstr "Постоје нове могућности за Подстицај учлањивања на Граватар."
+
+#: settings.php:253
+msgid "Now you can show message in dialog after comment is posted, as an administration notice, in admin bar, on a signup page for multisite installation and in a bbPress reply form if bbPress plugin is installed."
+msgstr "Сада можете приказати поруку у дијалогу након што је коментар објављен, као управљачку напомену, на управљачкој траци, на страници за отварање налога на поставкама за вишеместа и у обрасцу за унос одговора додатка bbPress ако је он укључен."
+
+#: settings.php:254
+msgid "Now you can add message after any element on a page more easily then before."
+msgstr "Сада можете додати поруку након било ког елемента на страници лакше него раније."
+
+#: settings.php:255
+msgid "There are new predefined elements for profile page."
+msgstr "Постоје нови унапред одређени елементи за страницу профила."
+
+#: settings.php:256
+msgid "Finally, there is a new, longer, and more descriptive default message. You can use the new default message, your existing message, or update your existing message."
+msgstr "Коначно, постоји нова, дужа и јаснија подразумевана порука. Можете користити нову подразумевану поруку, своју постојећу поруку, или ажурирати своју постојећу поруку."
+
+#: settings.php:258
+msgid "New default message:"
+msgstr "Нова подразумевана порука:"
+
+#: settings.php:260
+#: settings.php:271
+msgid "Do not show this notice again"
+msgstr "Не приказуј поново ову напомену"
+
+#: settings.php:269
+msgid "Now you can show message in admin bar, and in a bbPress reply form if bbPress plugin is installed."
+msgstr "Сада можете да прикажете поруку у управљачкој траци и у обрасцу за унос одговора у bbPress-у ако вам је укључен додатак bbPress."
+
+#: settings.php:280
+msgid "You have not created a custom message. Below is the default message, to help with creating your own custom message."
+msgstr "Нисте направили прилагођену поруку. Испод је подразумевана порука, да би вам помогла са прављењем ваше сопствене прилагођене поруке."
+
+#: settings.php:281
+msgid "Default message:"
+msgstr "Подразумевана порука:"
+
+#: settings.php:288
+msgid "Message to display to users who have not registered a Gravatar."
+msgstr "Порука која ће се приказивати корисницима који немају граватар."
+
+#: settings.php:289
+msgid "You should leave <strong>URL</strong> since it is automatically replaced with appropriate link to signup page on gravatar.com."
+msgstr "Требало би да оставите <strong>URL</strong> пошто је аутоматски замењен са одговарајућом везом ка страници за учлањивање на gravatar.com."
+
+#: settings.php:290
+msgid "Do not use double quotes (<strong>\"</strong>) since it will break code. Instead, use curly quotes (<strong>&#8220;</strong> and <strong>&#8221;</strong>) for text, and single quotes (<strong>&#039;</strong>) for HTML tags."
+msgstr "Не користите енглеске наводнике (<strong>\"</strong>) пошто ће пореметити код. Уместо тога, користите српске наводнике (<strong>&#0132;</strong> и <strong>&#0147;</strong>) за текст, и енглеске полунаводнике (<strong>&#039;</strong>) за HTML ознаке."
+
+#: settings.php:298
+#: gravatar-signup-encouragment.php:371
+msgid "Notice:"
+msgstr "Напомена:"
+
+#: settings.php:299
+msgid "Plugin Gravatar Signup Encouragement uses jQuery for display of messages. You can speed up your site by installing plugin <a href='http://jasonpenney.net/wordpress-plugins/use-google-libraries/'>Use Google Libraries</a>, which will load jQuery from Google's CDN."
+msgstr "Додатак Подстицај учлањивања на Граватар користи jQuery за приказ порука. Можете убрзати своје веб место постављајући додатак <a href='http://jasonpenney.net/wordpress-plugins/use-google-libraries/'>Use Google Libraries</a>, који ће учитавати jQuery са Гугловог CDN-а (мреже за достављање садржаја)."
+
+#: settings.php:300
+msgid " (<a href='%s'>read here for more information</a>)"
+msgstr " (<a href='%s'>прочитајте овде за више података</a>)"
+
+#: settings.php:301
+msgid "<a href='%s' class='thickbox'>Install Use Google Libraries</a>"
+msgstr "<a href='%s' class='thickbox'>Постави Use Google Libraries</a>"
+
+#: settings.php:312
+msgid "If you like plugin Gravatar Signup Encouragement, you can <a href='%s'>donate</a> to the author to support its further development."
+msgstr "Уколико волите додатак Подстицај учлањивања на Граватар, можете <a href='%s'>донирати</a> аутору да бисте подржали његов даљи развој."
+
+#: settings.php:434
+msgid "Close this video"
+msgstr "Затвори овај видео запис"
+
+#: settings.php:442
+msgid "Nonstandard default elements on your theme"
+msgstr "Нестандардни подразумевани елементи у вашој теми"
+
+#: settings.php:444
+msgid "Some default elements will not work on your theme and they are listed below. You need to add value of element to field <em>Custom element</em>. List below contains element name and value:"
+msgstr "Неки подразумевани елементи неће радити у вашој тему и они су наведени испод. Морате да додате вредности елемента у поље <em>Прилагођен елемент</em>. Списак испод садржи назив елемента и вредност:"
+
+#: settings.php:480
+#: gravatar-signup-encouragment.php:777
+msgid "Close this message"
+msgstr "Затвори ову поруку"
+
+#: gravatar-signup-encouragment.php:172
+msgid "Settings"
+msgstr "Подешавања"
+
+#: gravatar-signup-encouragment.php:173
+msgid "Donate"
+msgstr "Донација"
+
+#: gravatar-signup-encouragment.php:265
+msgid ""
+"You do not appear to have a registered Gravatar. Therefore, the default avatar will be shown with your comments on this site.\r\n"
+"\r\n"
+"If you would like your own Gravatar, click <a href='%s' target='_blank'>here</a> to create one (link opens in new tab/window)."
+msgstr ""
+"Изгледа да немате регистрован граватар. Зато ће подразумевани аватар бити приказан уз ваше коментаре на овом веб месту.\r\n"
+"\r\n"
+"Уколико желите сопствени граватар, притисните <a href='%s' target='_blank'>овде</a> да бисте направили један (веза се отвара у новом језичку/прозору)."
+
+#: gravatar-signup-encouragment.php:372
+msgid "The latest version of the Gravatar Signup Encouragement plugin has new options. Default settings have been configured for these options. Would you like to review and update these new options?"
+msgstr "Последње издање додатка Подстицај учлањивања на Граватар има нове могућности. Подразумевана подешавања су подешена за ове могућности. Да ли желите да прегледате и ажурирате ове нове могућности?"
+
+#: gravatar-signup-encouragment.php:375
+msgid "Yes (edit Gravatar Signup Encouragement settings)"
+msgstr "Да (уреди подешавања Подстицаја учлањивања на Граватар)"
+
+#: gravatar-signup-encouragment.php:376
+msgid "No (use pre-configured default settings)"
+msgstr "Не (користи унапред одређена подразумевана подешавања)"
+
+#: gravatar-signup-encouragment.php:470
+#: gravatar-signup-encouragment.php:508
+msgid "Gravatar Signup Encouragement"
+msgstr "Подстицај учлањивања на Граватар"
+
+#: gravatar-signup-encouragment.php:509
+msgid "<a href='http://blog.milandinic.com/wordpress/plugins/gravatar-signup-encouragement/' target='_blank'>Gravatar Signup Encouragement Settings Documentation</a>"
+msgstr "<a href='http://blog.milandinic.com/wordpress/plugins/gravatar-signup-encouragement/' target='_blank'>Документација за подешавања Подстицаја учлањивања на Граватар</a>"
+
+#: gravatar-signup-encouragment.php:510
+msgid "<a href=\"http://wordpress.org/tags/gravatar-signup-encouragement\" target=\"_blank\">Gravatar Signup Encouragement Support Forums</a>"
+msgstr "<a href=\"http://wordpress.org/tags/gravatar-signup-encouragement\" target=\"_blank\">Форуми подршке Подстицаја учлањивања на Граватар</a>"
+
+#. translators: Locale gravatar.com, e.g. sr.gravatar.com for Serbian
+#: gravatar-signup-encouragment.php:539
+msgctxt "Locale gravatar.com, e.g. sr.gravatar.com for Serbian"
+msgid "en.gravatar.com"
+msgstr "sr.gravatar.com"
+
+#: gravatar-signup-encouragment.php:763
+#: gravatar-signup-encouragment.php:927
+msgid "Signup to Gravatar"
+msgstr "Отворите налог на Граватару"
+
+#: gravatar-signup-encouragment.php:776
+msgid "Get a new avatar"
+msgstr "Добијте нови аватар"
+
+#~ msgid "Custom ID:"
+#~ msgstr "Прилагођени ID:"
+
+#~ msgid ""
+#~ "It seems that you don't have an avatar on Gravatar. Click <a href='%s' "
+#~ "target='_blank'>here</a> to make one."
+#~ msgstr ""
+#~ "Изгледа да немате аватар на Граватару. Притисните <a href='%s' "
+#~ "target='_blank'>овде</a> да бисте направили један."
+
+#~ msgid ""
+#~ "Choose below which text input field or element on profile page to show "
+#~ "Gravatar Signup Encouragement message"
+#~ msgstr ""
+#~ "Изаберите испод ког поља за унос текста или елемента на страници профила "
+#~ "желите да прикажете поруку за подстицај учлањивања на Граватар"
+
+#~ msgid "“Name” header"
+#~ msgstr "Заглавље „Име“"
+
+#~ msgid "“About Yourself” header"
+#~ msgstr "Заглавље „О вама“"
+
+#~ msgid ""
+#~ "Choose below which text input field or element on registration page to "
+#~ "show Gravatar Signup Encouragement message"
+#~ msgstr ""
+#~ "Изаберите испод ког поља за унос текста или елемента на страници за "
+#~ "регистровање желите да прикажете поруку за подстицај учлањивања на "
+#~ "Граватар"
+
+#~ msgid "Text of tip"
+#~ msgstr "Текст поруке"

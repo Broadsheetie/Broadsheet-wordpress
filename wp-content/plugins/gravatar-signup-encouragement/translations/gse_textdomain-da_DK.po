@@ -1,0 +1,356 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Gravatar Signup Encouragement 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-09-29 23:46+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Team Blogos <wordpress@blogos.dk>\n"
+"Language-Team: Team Blogos <wordpress@blogos.dk>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2;plural=n != 1;\n"
+"X-Poedit-Language: Danish\n"
+"X-Poedit-Country: DENMARK\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_c;_e;__ngettext:1,2;__ngettext_noop:1,2;_n:1,2;_nc:1,2;_n_noop:1,2\n"
+"X-Poedit-Basepath: d:\\wordpress\\plugins\\gravatar-signup-encouragement\n"
+"X-Poedit-SearchPath-0: d:\\wordpress\\plugins\\gravatar-signup-encouragement\n"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:71
+#, php-format
+msgid ""
+"You do not appear to have a registered Gravatar. Therefore, the default avatar will be shown with your comments on this site.\n"
+"\n"
+"If you would like your own Gravatar, click <a href='%s' target='_blank'>here</a> to create one (link opens in new tab/window)."
+msgstr ""
+"Du ser ikke ud til at have registreret en Gravatar. Derfor vises dine kommentarer med standardgravataren på dette site.\n"
+"\n"
+"Hvis du gerne vil have din egen Gravatar, så klik <a href='%s' target='_blank'>her</a> for at oprette en (linket åbner i en ny fane/et nyt vindue)."
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:220
+msgid "Settings"
+msgstr "Indstillinger"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:238
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:292
+msgid "Gravatar Signup Encouragement"
+msgstr "Gravatar Signup Encouragement"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:239
+msgid "<a href='http://blog.milandinic.com/wordpress/plugins/gravatar-signup-encouragement/' target='_blank'>Gravatar Signup Encouragement Settings Documentation</a>"
+msgstr "<a href='http://blog.milandinic.com/wordpress/plugins/gravatar-signup-encouragement/' target='_blank'>Dokumentation for Gravatar Signup Encouragements indstillinger</a>"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:240
+msgid "<a href=\"http://wordpress.org/tags/gravatar-signup-encouragement\" target=\"_blank\">Gravatar Signup Encouragement Support Forums</a>"
+msgstr "<a href=\"http://wordpress.org/tags/gravatar-signup-encouragement\" target=\"_blank\">Gravatar Signup Encouragements supportforummer</a>"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:312
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:1103
+msgid "Notice:"
+msgstr "Besked:"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:313
+msgid "Plugin Gravatar Signup Encouragement uses jQuery for display of messages. You can speed up your site by installing plugin <a href='http://jasonpenney.net/wordpress-plugins/use-google-libraries/'>Use Google Libraries</a>, which will load jQuery from Google's CDN."
+msgstr "Pluginnet Gravatar Signup Encouragement bruger jQuery til at vise beskeder. Du kan forsøge hastigheden på dit site ved at installeret pluginnet <a href='http://jasonpenney.net/wordpress-plugins/use-google-libraries/'>Use Google Libraries</a>, som sørger for at indlæse jQuery fra Googles CDN."
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:314
+#, php-format
+msgid " (<a href='%s'>read here for more information</a>)"
+msgstr " (<a href='%s'>læs her, hvis du har brug for flere oplysninger</a>)"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:315
+#, php-format
+msgid "<a href='%s' class='thickbox'>Install Use Google Libraries</a>"
+msgstr "<a href='%s' class='thickbox'>Installér Use Google Libraries</a>"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:320
+msgid "Choose where to show Gravatar Signup Encouragement message"
+msgstr "Vælg, hvor du vil vise Gravatar Signup Encouragement-opfordringen"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:325
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:627
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:638
+msgid "Comment form (unregistered users)"
+msgstr "Kommentarformular (ikke-registrerede brugere)"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:325
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:358
+msgid "Message shown below comment text field on a Twenty Ten theme"
+msgstr "Besked, der vises nedenfor kommentartekstfeltet i temaet Twenty Ten"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:325
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:358
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:389
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:394
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:399
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:404
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:439
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:461
+msgid "example of how this looks"
+msgstr "eksempel på, hvordan det vil se ud"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:328
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:361
+msgid "Choose the comment form element or text field to display the Gravatar Signup Encouragement message below it"
+msgstr "Vælg, hvilket tekstfelt eller element i kommentarformularen Gravatar Signup Encouragement-opfordringen skal vises nedenfor"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:335
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:368
+#, php-format
+msgid "Notice: Theme you are using doesn't fully follow WordPress theme standards so some of predefined fields in comment form might not work. You can add custom element to make it work. Read <a href='%s' class='thickbox'>here</a> for more information."
+msgstr "Bemærk: Temaet, du bruger, følger ikke helt WordPress' temastandarder, så nogle af de foruddefinerede felter i kommentarformularen virker måske ikke. Du kan få det til at virke ved at tilføje brugerdefinerede elementer. Læs <a href='%s' class='thickbox'>her</a>, hvis du har brug for flere oplysninger."
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:342
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:375
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:640
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:648
+msgid "Comment text"
+msgstr "Kommentartekst"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:344
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:629
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:641
+msgid "URL"
+msgstr "URL"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:346
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:421
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:445
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:467
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:630
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:642
+msgid "E-mail address"
+msgstr "E-mail-adresse"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:349
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:380
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:451
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:473
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:643
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:650
+msgid "Submit button"
+msgstr "Indsend-knap"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:352
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:383
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:433
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:454
+msgid "Custom element:"
+msgstr "Brugerdefineret element:"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:352
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:383
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:433
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:454
+msgid "Use <a href=\"http://api.jquery.com/category/selectors/\" target=\"_blank\">jQuery selectors</a> to choose any element on a page"
+msgstr "Brug <a href=\"http://api.jquery.com/category/selectors/\" target=\"_blank\">jQuery-selektorer</a> til at vælge et hvilket som helst element på siden"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:358
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:646
+msgid "Comment form (registered users)"
+msgstr "Kommentarformular (registrere brugere)"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:377
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:649
+msgid "Logout URL"
+msgstr "Log ud-URL"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:389
+msgid "Dialog after comment posting (unregistered users)"
+msgstr "Dialogboks efter indsendelse af kommentar (ikke-registrerede brugere)"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:389
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:394
+msgid "Message shown in a dialog over a Twenty Ten theme after comment is posted"
+msgstr "Besked, der vises i en dialogboks ovenpå temaet Twenty Ten, når kommentar er indsendt"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:394
+msgid "Dialog after comment posting (registered users)"
+msgstr "Dialogboks efter indsendelse af kommentar (registrerede brugere)"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:399
+msgid "Administration notice"
+msgstr "Besked i kontrolpanel"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:399
+msgid "Message shown in administration notices"
+msgstr "Besked, der vises i kontrolpanelet"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:404
+msgid "Profile page"
+msgstr "Profilside"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:404
+msgid "Message shown on a profile page below “Profile” header"
+msgstr "Besked, der vises på en profilside under overskriften \"Profil\""
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:407
+msgid "Choose the profile page form element or text field to display the Gravatar Signup Encouragement message below it"
+msgstr "Vælg, hvilket tekstfelt eller element på profilsiden Gravatar Signup Encouragement-opfordringen skal vises nedenunder"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:410
+msgid "Header &#8220;Profile&#8221;"
+msgstr "Overskriften &#8220;Profil&#8221;"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:413
+msgid "Header &#8220;Name&#8221;"
+msgstr "Overskriften &#8220;Navn&#8221;"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:416
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:448
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:470
+msgid "User name"
+msgstr "Brugernavn"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:418
+msgid "Nicename"
+msgstr "Nicename"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:424
+msgid "Header &#8220;About Yourself&#8221;"
+msgstr "Overskriften &#8220;Om dig selv&#8221;"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:427
+msgid "Biographical Info"
+msgstr "Biografisk info"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:430
+msgid "Last input field (by default, &#8220;New Password&#8221;)"
+msgstr "Sidste inputfelt (som standard er det &#8220;Nyt kodeord&#8221;)"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:439
+msgid "Registration page"
+msgstr "Registreringsside"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:439
+msgid "Message shown on a registration page below e-mail address text field"
+msgstr "Besked, der vises på registreringssiden under tekstfeltet til e-mail-adressen"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:442
+msgid "Choose the registration page form element or text field to display the Gravatar Signup Encouragement message below it"
+msgstr "Vælg, hvilket tekstfelt eller element på registreringssiden Gravatar Signup Encouragement-opfordringen skal vises nedenunder"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:461
+msgid "Signup page (multisite)"
+msgstr "Registreringsside (multisite)"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:461
+msgid "Message shown on a registration page (multisite) on a Twenty Ten theme below e-mail address text field"
+msgstr "Besked, der vises under tekstfeltet til e-mail-adressen på en registreringsside (multisite) med temaet Twenty Ten"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:464
+msgid "Choose the (multisite) registration page form element or text field to display the Gravatar Signup Encouragement message below it"
+msgstr "Vælg, hvilket tekstfelter eller element på en multiinstallations registreringsside Gravatar Signup Encouragement-opfordringen skal vises nedenunder"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:476
+msgid "Custom ID:"
+msgstr "Brugerdefineret id:"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:489
+msgid "There are new options for Gravatar Signup Encouragement."
+msgstr "Der er nye indstillinger for Gravatar Signup Encouragement."
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:491
+msgid "Now you can show message in dialog after comment is posted, as an administration notice, and on a signup page for multisite installation."
+msgstr "Nu kan du vise beskeder i en dialogboks efter indsendelse af en kommentar, som en kontrolpanelbesked eller på en multisiteinstallations registreringssider"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:492
+msgid "Now you can add message after any element on a page more easily then before."
+msgstr "Nu er det lettere for dig at tilføje beskeder efter et hvilket som helst element på en side, end det var før."
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:493
+msgid "There are new predefined elements for profile page."
+msgstr "Der er nye foruddefinerede elementer på profilsiden."
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:494
+msgid "Finally, there is a new, longer, and more descriptive default message. You can use the new default message, your existing message, or update your existing message."
+msgstr "Endelig er der en ny, længere og mere beskrivende standardbesked. Du kan bruge den nye standardbesked eller din eksisterende besked, eller du kan opdatere din eksisterende."
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:496
+msgid "New default message:"
+msgstr "Ny standardbesked:"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:498
+msgid "Do not show this notice again"
+msgstr "Vis ikke denne besked mere"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:507
+msgid "You have not created a custom message. Below is the default message, to help with creating your own custom message."
+msgstr "Du har ikke oprettet en brugerdefineret besked. Nedenfor vises standardbeskeden som hjælp til at oprette din egen brugerdefinerede besked."
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:508
+msgid "Default message:"
+msgstr "Standardbesked:"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:513
+msgid "Message to display to users who have not registered a Gravatar."
+msgstr "Tekst, der skal vises til brugere, der ikke har registreret en Gravatar."
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:514
+msgid "You should leave <strong>URL</strong> since it is automatically replaced with appropriate link to signup page on gravatar.com."
+msgstr "Du bør ikke fjerne <strong>URL</strong>, eftersom denne automatisk erstattes med det rigtige link til registreringssiden på gravatar.com."
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:515
+msgid "Do not use double quotes (<strong>\"</strong>) since it will break code. Instead, use curly quotes (<strong>&#8220;</strong> and <strong>&#8221;</strong>) for text, and single quotes (<strong>&#039;</strong>) for HTML tags."
+msgstr "Brug ikke dobbelte anførselstegn (<strong>\"</strong>), for så vil koden ikke virke. Brug i stedet buede anførselstegn (<strong>&#8220;</strong> og <strong>&#8221;</strong>) til tekst og enkelte anførselstegn (<strong>&#039;</strong>) til HTML-tags."
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:621
+msgid "Nonstandard default elements on your theme"
+msgstr "Standardelementer i dit tema, som ikke følger WordPress-standarden"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:623
+msgid "Some default elements will not work on your theme and they are listed below. You need to add value of element to field <em>Custom element</em>. List below contains element name and value:"
+msgstr "Nogle standardelementer vil ikke virke med dit tema. Dem kan du se nedenfor. Du skal tilføje elementernes værdier til feltet <em>Brugerdefinerede elementer</em>. Listen nedenfor indeholder elementets navn og værdi:"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:659
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:908
+msgid "Close this message"
+msgstr "Luk denne besked"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:898
+msgid "Signup to Gravatar"
+msgstr "Registrér dig på Gravatar"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:907
+msgid "Get a new avatar"
+msgstr "Få en ny avatar"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:1104
+msgid "The latest version of the Gravatar Signup Encouragement plugin has new options. Default settings have been configured for these options. Would you like to review and update these new options?"
+msgstr "Den nye version af pluginnet Gravatar Signup Encouragement har nye indstillinger. Der er konfigureret standardindstillinger for disse indstillinger. Ønsker du at gennemse og opdatere disse nye indstillinger?"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:1106
+msgid "Yes (edit Gravatar Signup Encouragement settings)"
+msgstr "Ja (redigér indstillinger for Gravatar Signup Encouragement)"
+
+#: d:\wordpress\plugins\gravatar-signup-encouragement/gravatar-signup-encouragment.php:1107
+msgid "No (use pre-configured default settings)"
+msgstr "Nej (brug de foruddefinerede standardindstillinger)"
+
+#~ msgid ""
+#~ "It seems that you don't have an avatar on Gravatar. Click <a href='%s' "
+#~ "target='_blank'>here</a> to make one."
+#~ msgstr ""
+#~ "Du ser ikke ud til at have en Gravatar. Klik <a href='%s' "
+#~ "target='_blank'>her</a> for at oprette en."
+
+#~ msgid ""
+#~ "Choose below which text input field or element on profile page to show "
+#~ "Gravatar Signup Encouragement message"
+#~ msgstr ""
+#~ "Vælg nedenfor, hvilke tekstinputfelter eller elementer på profilsiden "
+#~ "Gravatar Signup Encouragement-opfordringen skal vises i"
+
+#~ msgid "“Name” header"
+#~ msgstr "\"Navn\"-header"
+
+#~ msgid "“About Yourself” header"
+#~ msgstr "\"Om dig selv\"-header"
+
+#~ msgid ""
+#~ "Choose below which text input field or element on registration page to "
+#~ "show Gravatar Signup Encouragement message"
+#~ msgstr ""
+#~ "Vælg nedenfor, hvilke tekstinputfelter eller elementer på "
+#~ "registreringssiden Gravatar Signup Encouragement-opfordringen skal vises i"
