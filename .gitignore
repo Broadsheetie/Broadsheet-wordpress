@@ -15,4 +15,4 @@ profile
 *.moved-aside
 
 #wordpress
-wp-config-sample.php
+wp-config.php
