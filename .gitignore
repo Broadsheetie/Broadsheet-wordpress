@@ -16,3 +16,7 @@ profile
 
 #wordpress
 wp-config.php
+wp-content/uploads
+
+#local files
+robots.txt
