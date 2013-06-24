@@ -21,3 +21,8 @@ wp-content/uploads
 #local files
 robots.txt
 .htaccess
+
+#Eclipse
+.buildpath
+.project
+.settings
