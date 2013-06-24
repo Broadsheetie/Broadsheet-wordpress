@@ -12,6 +12,9 @@
 ?>
 	</div><!-- #main .wrapper -->
 	<footer id="colophon" role="contentinfo">
+		<div>
+			<a href="http://itunes.apple.com/ie/app/broadsheet-ie/id413093424?mt=8"></a><img src="/images/apple_app_download.png" width="135" height="40" alt="Download the iPhone app"/></a>&nbsp;<a href="http://www.windowsphone.com/en-ie/store/app/broadsheet-ie/d0dc0c2c-5371-400f-9ad2-812a27e25f06"></a><img src="/images/windows_app_download.png" width="125" height="40" alt="Download the Windows Phone app" />&nbsp;</a><a href="https://play.google.com/store/apps/details?id=ie.broadsheet.app&feature=search_result#?t=W251bGwsMSwyLDEsImllLmJyb2Fkc2hlZXQuYXBwIl0."></a><img src="/images/android_app_download.png" width="125" height="40" alt="Download the Android app" /></a>
+		</div>
         <div class="site-info">
             <a href="">Contact Us</a>&nbsp;|&nbsp;<a href="">Contributors</a>&nbsp;|&nbsp;<a href="">Privacy Policy</a>
 		</div><!-- .site-info -->
