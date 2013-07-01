@@ -33,7 +33,13 @@ body .site {
     }
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 681px) and (max-width: 767px) {
+    .hide-medium {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 768px) {
     .hide-large {
         display: none;
     }
@@ -43,6 +49,15 @@ body .site {
     min-width: 300px;
 }
 
+.widget-area .widget {
+    margin-bottom: 1.5rem;
+}
+
 .widget-area #s {
     width: 73%;
+}
+
+.widget-title {
+    background: none repeat scroll 0 0 #CC0000;
+    color: white;
 }
