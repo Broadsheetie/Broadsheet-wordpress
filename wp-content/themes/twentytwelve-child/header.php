@@ -51,8 +51,8 @@ google_ad_height = 90;
 </script>
         </center>
         <center class="hide-small">
-            <a href="/"><img src="/images/header_logo.png" alt="Broadsheet.ie" width="624" height="127" /></a>
-            <img src="/images/Chompsky_163x127.png" alt="Broadsheet.ie" width="163" height="127" />
+            <a href="/"><img src="/logo/header_logo.png" alt="Broadsheet.ie" width="624" height="127" /></a>
+            <img class="hide-medium" src="/images/Chompsky_163x127.png" alt="Broadsheet.ie" width="163" height="127" />
         </center>
         <center class="show-small hide-large">
             <a href="/"><img src="/images/Chompsky_163x127.png" alt="Broadsheet.ie" width="163" height="127" /></a>
