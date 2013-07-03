@@ -33,20 +33,29 @@ body .site {
     }
 }
 
-@media screen and (min-width: 681px) and (max-width: 767px) {
-    .hide-medium {
+/* iPads (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (orientation : portrait) {
+    .show-medium {
+        display: block;
+    }
+    .small-medium {
+        display: none;
+    }
+    .hide-large {
         display: none;
     }
 }
 
 @media screen and (min-width: 768px) {
-    .show-medium {
+    .show-large {
         display: block;
     }
-    .hide-large {
+    .hide-medium {
         display: none;
     }
-    .hide-medium {
+    .hide-large {
         display: none;
     }
 }
