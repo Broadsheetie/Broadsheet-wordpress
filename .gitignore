@@ -26,3 +26,6 @@ robots.txt
 .buildpath
 .project
 .settings
+
+#vim
+*.swp
