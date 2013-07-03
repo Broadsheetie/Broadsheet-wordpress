@@ -38,7 +38,7 @@
         <center class="hide-small">
 <script type="text/javascript"><!--
 var width = window.innerWidth || document.documentElement.clientWidth;
-if (width >= 800) {
+if (width >= 768) {
 google_ad_client = "ca-pub-1189639444988756";
 /* TaxCalc Leaderboard */
 google_ad_slot = "1652234392";
@@ -50,9 +50,12 @@ google_ad_height = 90;
 <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script>
         </center>
-        <center class="hide-small">
+        <center class="hide-small hide-medium">
             <a href="/"><img src="/logo/header_logo.png" alt="Broadsheet.ie" width="624" height="127" /></a>
-            <img class="hide-medium" src="/images/Chompsky_163x127.png" alt="Broadsheet.ie" width="163" height="127" />
+            <img src="/images/Chompsky_163x127.png" alt="Broadsheet.ie" width="163" height="127" />
+        </center>
+        <center class="hide-small show-medium hide-large">
+            <a href="/"><img src="/logo/header_logo.png" alt="Broadsheet.ie" width="624" height="127" /></a>
         </center>
         <center class="show-small hide-large">
             <a href="/"><img src="/images/Chompsky_163x127.png" alt="Broadsheet.ie" width="163" height="127" /></a>

@@ -40,7 +40,13 @@ body .site {
 }
 
 @media screen and (min-width: 768px) {
+    .show-medium {
+        display: block;
+    }
     .hide-large {
+        display: none;
+    }
+    .hide-medium {
         display: none;
     }
 }
