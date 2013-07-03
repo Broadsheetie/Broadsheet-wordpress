@@ -58,6 +58,6 @@
                 });
 </script>
 
-<script src="http://www.newswhip.com/WidgetJavaScriptAction?style=newswhip&widgetRequested=Ireland&count=5" type="text/javascript"></script>
+<script src="http://www.newswhip.com/WidgetJavaScriptAction?style=newswhiplight&widgetRequested=Ireland-All&count=5&removeInteractions=false&removePreview=false&removeImage=false" type="text/javascript"></script>
 </body>
 </html>
