@@ -24,9 +24,6 @@ body .site {
 }
 
 @media screen and (max-width: 680px) {
-    .show-small {
-        display: block;
-    }
     
     .hide-medium {
         display: none;
@@ -35,22 +32,27 @@ body .site {
     .hide-small {
         display: none;
     }
+
+    .show-small {
+        display: block;
+    }
 }
 
 /* iPads (portrait and landscape) ----------- */
 @media only screen 
 and (min-device-width : 768px) 
 and (orientation : portrait) {
-    .show-medium {
-        display: block;
-    }
-    .hide-small {
+    .hide-medium {
         display: none;
     }
     .hide-large {
         display: none;
     }
-    
+   
+   .show-medium {
+         display: block;
+    }
+
     .site-content,
     .widget-area {
     	width:100%;
@@ -58,17 +60,17 @@ and (orientation : portrait) {
     }
 }
 
-@media screen and (min-width: 768px) {
-    .show-large {
-        display: block;
-    }
-	
+@media screen and (min-width: 769px) {
 	.hide-medium {
 		display: none;
 	}
 	
     .hide-large {
         display: none;
+    }
+
+    .show-large {
+         display: block;
     }
 }
 
