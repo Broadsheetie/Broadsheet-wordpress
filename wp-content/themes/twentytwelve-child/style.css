@@ -27,7 +27,11 @@ body .site {
     .show-small {
         display: block;
     }
-
+    
+    .hide-medium {
+        display: none;
+    }
+    
     .hide-small {
         display: none;
     }
@@ -40,11 +44,17 @@ and (orientation : portrait) {
     .show-medium {
         display: block;
     }
-    .small-medium {
+    .hide-small {
         display: none;
     }
     .hide-large {
         display: none;
+    }
+    
+    .site-content,
+    .widget-area {
+    	width:100%;
+    	float: none;
     }
 }
 
@@ -52,7 +62,11 @@ and (orientation : portrait) {
     .show-large {
         display: block;
     }
-
+	
+	.hide-medium {
+		display: none;
+	}
+	
     .hide-large {
         display: none;
     }
