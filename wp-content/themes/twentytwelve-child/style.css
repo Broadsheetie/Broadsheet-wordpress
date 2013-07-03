@@ -67,3 +67,7 @@ body .site {
     background: none repeat scroll 0 0 #CC0000;
     color: white;
 }
+
+.footer-info {
+	text-align: center;
+}
