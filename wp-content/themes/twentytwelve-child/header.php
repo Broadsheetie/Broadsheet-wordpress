@@ -60,6 +60,11 @@ google_ad_height = 90;
         <center class="hide-medium hide-large show-small">
             <a href="/"><img src="/images/Chompsky_163x127.png" alt="Broadsheet.ie" width="163" height="127" /></a>
         </center>
+        <div class="header-bar">
+            <div class="alignright">
+                <a href="">[email]</a><a href="http://twitter.com/broadsheet_ie">[twitter]</a><a href="http://www.facebook.com/broadsheet.ie">[facebook]</a>
+            </div>
+        </div>
 	</header><!-- #masthead -->
 
 	<div id="main" class="wrapper">

@@ -27,9 +27,11 @@ function twentytwelve_entry_meta() {
 		get_the_author()
 	);
 
+    $time = get_the_time();
+
 	// Translators: 1 is category, 2 is tag, 3 is the date and 4 is the author's name.
 	if ( $tag_list ) {
-		$utility_text = __( 'Posted in %1$s and tagged %2$s on %3$s<span class="by-author"> by %4$s</span>.', 'twentytwelve' );
+		$utility_text = __( 'Posted in %1$s and tagged %2$s at %3$s on %4$s<span class="by-author"> by %5$s</span>.', 'twentytwelve' );
 	} elseif ( $categories_list ) {
 		$utility_text = __( 'Posted in %1$s on %3$s<span class="by-author"> by %4$s</span>.', 'twentytwelve' );
 	} else {
@@ -39,7 +41,8 @@ function twentytwelve_entry_meta() {
 	printf(
 		$utility_text,
 		$categories_list,
-		$tag_list,
+        $tag_list,
+        $time,
 		$date,
 		$author
 	);
