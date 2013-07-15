@@ -32,6 +32,16 @@ body .site {
     height: 40px;
 }
 
+.header-bar img {
+    padding: 5px;
+}
+
+.header-bar .strapline {
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+}
+
 @media screen and (max-width: 680px) {
     
     .hide-medium {

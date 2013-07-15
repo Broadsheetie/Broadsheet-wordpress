@@ -61,8 +61,11 @@ google_ad_height = 90;
             <a href="/"><img src="/images/Chompsky_163x127.png" alt="Broadsheet.ie" width="163" height="127" /></a>
         </center>
         <div class="header-bar">
+        	<div class="strapline alignleft">
+        		Everything. As It Happens.
+        	</div>
             <div class="alignright">
-                <a href="">[email]</a><a href="http://twitter.com/broadsheet_ie">[twitter]</a><a href="http://www.facebook.com/broadsheet.ie">[facebook]</a>
+                <a href="/contact/"><img src="/images/mail-29x29.png" width="29" height="29" alt="Contact Broadsheet" /></a><a href="http://twitter.com/broadsheet_ie"><img src="/images/twitter-29x29.png" width="29" height="29" alt="Broadsheet on Twitter" /></a><a href="http://www.facebook.com/broadsheet.ie"><img src="/images/facebook-29x29.png" width="29" height="29" alt="Broadsheet on Facebook" /></a>
             </div>
         </div>
 	</header><!-- #masthead -->
