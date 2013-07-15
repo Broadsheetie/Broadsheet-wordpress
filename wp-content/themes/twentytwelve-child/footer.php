@@ -59,5 +59,10 @@
 </script>
 
 <script src="http://www.newswhip.com/WidgetJavaScriptAction?style=newswhiplight&widgetRequested=Ireland-All&count=5&removeInteractions=false&removePreview=false&removeImage=false" type="text/javascript"></script>
+<!-- BroadsheetTakeover -->
+<div id='div-gpt-ad-1349021718141-3' style='width:1px; height:1px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1349021718141-3'); });
+</script>
 </body>
 </html>

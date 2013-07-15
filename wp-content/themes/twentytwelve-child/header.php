@@ -30,35 +30,66 @@
 <![endif]-->
 <?php wp_head(); ?>
 <link rel='stylesheet' id='sharedaddy-css'  href='http://broadsheet.karlmonaghan.com/wp-content/plugins/jetpack/modules/sharedaddy/sharing.css?ver=2.3' type='text/css' media='all' />
+<script type='text/javascript'>
+  function recordOutboundLink(link, category, action) {
+    _gat._getTrackerByName()._trackEvent(category, action);
+    setTimeout('window.open("' + link + '")', 100);
+  }
+
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+(function() {
+var gads = document.createElement('script');
+gads.async = true;
+gads.type = 'text/javascript';
+var useSSL = 'https:' == document.location.protocol;
+gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
+var node = document.getElementsByTagName('script')[0];
+node.parentNode.insertBefore(gads, node);
+})();
+
+googletag.cmd.push(function() {
+googletag.defineSlot('/20132202/BroadsheetLeaderboard', [728, 90], 'div-gpt-ad-1348854553033-0').addService(googletag.pubads());
+googletag.defineSlot('/20132202/Broadsheet_Mobile_Leaderboard', [320, 50], 'div-gpt-ad-1373919137130-0').addService(googletag.pubads());
+googletag.defineSlot('/20132202/BroadsheetMPU', [300, 250], 'div-gpt-ad-1348854553033-1').addService(googletag.pubads());
+googletag.defineSlot('/20132202/BroadsheetMPU2', [300, 250], 'div-gpt-ad-1348854553033-2').addService(googletag.pubads());
+googletag.defineSlot('/20132202/BroadsheetTakeover', [1, 1], 'div-gpt-ad-1349021718141-3').addService(googletag.pubads());
+<?php if  ( is_home() || is_front_page() ) : ?>
+googletag.defineSlot('/20132202/BroadsheetBillboard', [950, 260], 'div-gpt-ad-1371379584892-0').addService(googletag.pubads());
+<?php endif; ?>
+googletag.defineSlot('/20132202/Broadsheet_Filmstrip', [300, 600], 'div-gpt-ad-1373919543635-0').addService(googletag.pubads());
+googletag.pubads().enableSingleRequest();
+googletag.pubads().collapseEmptyDivs();
+googletag.enableServices();
+});
+</script>
 </head>
 
 <body <?php body_class(); ?>>
 <div id="page" class="hfeed site">
 	<header id="masthead" class="site-header" role="banner">
-        <center class="hide-small">
-<script type="text/javascript"><!--
-var width = window.innerWidth || document.documentElement.clientWidth;
-if (width >= 768) {
-google_ad_client = "ca-pub-1189639444988756";
-/* TaxCalc Leaderboard */
-google_ad_slot = "1652234392";
-google_ad_width = 728;
-google_ad_height = 90;
-}
-//-->
-</script>
-<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-</script>
+        <center>
+			<!-- BroadsheetLeaderboard -->
+			<div id='div-gpt-ad-1348854553033-0' style='width:728px; height:90px;display:none'>
+			<script type='text/javascript'>
+			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1348854553033-0'); });
+			</script>
+			</div>
+			<!-- BroadsheetBillboard -->
+			<div id='div-gpt-ad-1371379584892-0' style='width:950px; height:260px;display:none'>
+			<script type='text/javascript'>
+			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1371379584892-0'); });
+			</script>
+			</div>
+			<!-- Broadsheet_Mobile_Leaderboard -->
+			<div id='div-gpt-ad-1373919137130-0' style='width:320px; height:50px;display:none'>
+			<script type='text/javascript'>
+			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1373919137130-0'); });
+			</script>
+			</div>
         </center>
-        <center class="hide-small hide-medium show-large">
-            <a href="/"><img src="/logo/header_logo.png" alt="Broadsheet.ie" width="624" height="127" /></a>
-            <img src="/images/Chompsky_163x127.png" alt="Broadsheet.ie" width="163" height="127" />
-        </center>
-        <center class="hide-small hide-large show-medium">
-            <a href="/"><img src="/logo/header_logo.png" alt="Broadsheet.ie" width="624" height="127" /></a>
-        </center>
-        <center class="hide-medium hide-large show-small">
-            <a href="/"><img src="/images/Chompsky_163x127.png" alt="Broadsheet.ie" width="163" height="127" /></a>
+        <center>
+            <a href="/"><img class="hide-small" src="/logo/header_logo.png" alt="Broadsheet.ie" width="624" height="127" /><img class="show-large" src="/images/Chompsky_163x127.png" alt="Broadsheet.ie" width="163" height="127" /></a>
         </center>
         <div class="header-bar">
         	<div class="strapline alignleft">

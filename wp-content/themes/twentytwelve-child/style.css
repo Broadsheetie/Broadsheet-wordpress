@@ -38,41 +38,29 @@ body .site {
 
 .header-bar .strapline {
     color: white;
-    font-size: 20px;
-    padding: 10px;
+	font-size: 18px;
+	padding: 11px;
 }
 
-@media screen and (max-width: 680px) {
-    
-    .hide-medium {
-        display: none;
-    }
-    
+.hide-small {
+	display: inline;
+}
+@media screen and (max-width: 624px) {
     .hide-small {
         display: none;
     }
+}
 
-    .show-small {
-        display: block;
+@media screen and (min-width: 624px) {
+    .hide-small {
+        display: inline;
+    }
+	.show-large {
+        display: none;
     }
 }
 
-/* iPads (portrait and landscape) ----------- */
-@media only screen 
-and (min-device-width : 768px) 
-and (orientation : portrait)
-and (min-width: 768px) {
-    .hide-medium {
-        display: none;
-    }
-    .hide-large {
-        display: none;
-    }
-   
-   .show-medium {
-         display: block;
-    }
-
+@media screen and (max-width: 768px) {    
     .site-content,
     .widget-area {
     	width:100%;
@@ -80,18 +68,24 @@ and (min-width: 768px) {
     }
 }
 
-@media screen and (min-width: 769px) {
-	.hide-medium {
-		display: none;
+@media screen and (min-width: 821px) {
+    .show-large {
+        display: inline;
+    }
+}
+
+@media screen and (min-width: 960px) {
+	.hide-large {
+        display: inline;
+    }
+    
+	body .site {
+		padding: 0px;
 	}
 	
-    .hide-large {
-        display: none;
-    }
-
-    .show-large {
-         display: block;
-    }
+	.site-content {
+		width: 640px;
+	}
 }
 
 .entry-header .entry-title {
