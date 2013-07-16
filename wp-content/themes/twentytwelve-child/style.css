@@ -49,6 +49,12 @@ body .site {
     .hide-small {
         display: none;
     }
+
+    .header-bar .strapline {
+        font-size: 13px;
+        padding: 13px 5px 12px 5px;
+        font-weight: bold;
+    }
 }
 
 @media screen and (min-width: 624px) {
