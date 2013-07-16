@@ -49,15 +49,22 @@ node.parentNode.insertBefore(gads, node);
 })();
 
 googletag.cmd.push(function() {
-googletag.defineSlot('/20132202/BroadsheetLeaderboard', [728, 90], 'div-gpt-ad-1348854553033-0').addService(googletag.pubads());
-googletag.defineSlot('/20132202/Broadsheet_Mobile_Leaderboard', [320, 50], 'div-gpt-ad-1373919137130-0').addService(googletag.pubads());
+    
+    headerDiv  = document.getElementById("masthead");
+    pageWidth  = headerDiv.offsetWidth;
+
+    if (pageWidth >= 728) {
+        googletag.defineSlot('/20132202/BroadsheetLeaderboard', [728, 90], 'div-gpt-ad-1348854553033-0').addService(googletag.pubads());
+<?php if  ( !is_home() && !is_front_page() ) : ?>
+        googletag.defineSlot('/20132202/BroadsheetBillboard', [950, 260], 'div-gpt-ad-1371379584892-0').addService(googletag.pubads());
+<?php endif; ?>
+        googletag.defineSlot('/20132202/Broadsheet_Filmstrip', [300, 600], 'div-gpt-ad-1373919543635-0').addService(googletag.pubads());
+        googletag.defineSlot('/20132202/BroadsheetTakeover', [1, 1], 'div-gpt-ad-1349021718141-3').addService(googletag.pubads());
+    } else {
+        googletag.defineSlot('/20132202/Broadsheet_Mobile_Leaderboard', [320, 50], 'div-gpt-ad-1373919137130-0').addService(googletag.pubads());
+    }
 googletag.defineSlot('/20132202/BroadsheetMPU', [300, 250], 'div-gpt-ad-1348854553033-1').addService(googletag.pubads());
 googletag.defineSlot('/20132202/BroadsheetMPU2', [300, 250], 'div-gpt-ad-1348854553033-2').addService(googletag.pubads());
-googletag.defineSlot('/20132202/BroadsheetTakeover', [1, 1], 'div-gpt-ad-1349021718141-3').addService(googletag.pubads());
-<?php if  ( is_home() || is_front_page() ) : ?>
-googletag.defineSlot('/20132202/BroadsheetBillboard', [950, 260], 'div-gpt-ad-1371379584892-0').addService(googletag.pubads());
-<?php endif; ?>
-googletag.defineSlot('/20132202/Broadsheet_Filmstrip', [300, 600], 'div-gpt-ad-1373919543635-0').addService(googletag.pubads());
 googletag.pubads().enableSingleRequest();
 googletag.pubads().collapseEmptyDivs();
 googletag.enableServices();
