@@ -64,5 +64,9 @@
 <script type='text/javascript'>
 googletag.cmd.push(function() { googletag.display('div-gpt-ad-1349021718141-3'); });
 </script>
+<script src="/js/jquery.smartbanner.js"></script>
+    <script type="text/javascript">
+      $(function() { $.smartbanner() } )
+    </script>
 </body>
 </html>
