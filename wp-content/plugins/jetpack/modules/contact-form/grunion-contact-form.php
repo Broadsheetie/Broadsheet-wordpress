@@ -72,9 +72,8 @@ class Grunion_Contact_Form_Plugin {
 
 		// Export to CSV feature
 		if ( is_admin() ) {
-			add_action( 'admin_init',    array( $this, 'download_feedback_as_csv' ) );
-			add_action( 'load-edit.php', array( $this, 'export_form' ) );
-			add_action( 'admin_footer',  array( $this, 'move_export_form_to_bottom' ) );
+			add_action( 'admin_init',            array( $this, 'download_feedback_as_csv' ) );
+			add_action( 'admin_footer-edit.php', array( $this, 'export_form' ) );
 		}
 
 		// custom post type we'll use to keep copies of the feedback items
@@ -136,7 +135,9 @@ class Grunion_Contact_Form_Plugin {
 	function process_form_submission() {
 		$id = stripslashes( $_POST['contact-form-id'] );
 
-		check_admin_referer( "contact-form_{$id}" );
+		if ( is_user_logged_in() ) {
+			check_admin_referer( "contact-form_{$id}" );
+		}
 
 		$is_widget = 0 === strpos( $id, 'widget-' );
 
@@ -342,28 +343,6 @@ class Grunion_Contact_Form_Plugin {
 	}
 
 	/**
-	 * There aren't any usable actions in core to output the "export feedback" form in the correct place,
-	 * so this inline JS moves it from the top of the page to the bottom.
-	 */
-	function move_export_form_to_bottom() {
-		if ( get_current_screen()->id != 'edit-feedback' )
-			return;
-
-		// if there aren't any feedbacks, bail out
-		if ( ! (int) wp_count_posts( 'feedback' )->publish )
-			return;
-
-		echo "
-		<script type='text/javascript'>
-		var menu = document.getElementById( 'feedback-export' ),
-		wrapper = document.getElementsByClassName( 'wrap' )[0];
-		wrapper.appendChild(menu);
-		menu.style.display = 'block';
-		</script>
-		";
-	}
-
-	/**
 	 * Prints the menu
 	 */
 	function export_form() {
@@ -382,7 +361,7 @@ class Grunion_Contact_Form_Plugin {
 				<?php wp_nonce_field( 'feedback_export','feedback_export_nonce' ); ?>
 
 				<input name="action" value="feedback_export" type="hidden">
-				<label for="post"><? _e( 'Select feedback to download', 'jetpack' ) ?></label>
+				<label for="post"><?php _e( 'Select feedback to download', 'jetpack' ) ?></label>
 				<select name="post">
 					<option value="all"><?php esc_html_e( 'All posts', 'jetpack' ) ?></option>
 					<?php echo $this->get_feedbacks_as_options() ?>
@@ -393,6 +372,16 @@ class Grunion_Contact_Form_Plugin {
 			</form>
 		</div>
 
+		<?php
+		// There aren't any usable actions in core to output the "export feedback" form in the correct place,
+		// so this inline JS moves it from the top of the page to the bottom.
+		?>
+		<script type='text/javascript'>
+		var menu = document.getElementById( 'feedback-export' ),
+		wrapper = document.getElementsByClassName( 'wrap' )[0];
+		wrapper.appendChild(menu);
+		menu.style.display = 'block';
+		</script>
 		<?php
 	}
 
@@ -889,7 +878,9 @@ class Grunion_Contact_Form extends Crunion_Contact_Form_Shortcode {
 			$r .= $form->body;
 			$r .= "\t<p class='contact-submit'>\n";
 			$r .= "\t\t<input type='submit' value='" . esc_attr( $form->get_attribute( 'submit_button_text' ) ) . "' class='pushbutton-wide'/>\n";
-			$r .= "\t\t" . wp_nonce_field( 'contact-form_' . $id, '_wpnonce', true, false ) . "\n"; // nonce and referer
+			if ( is_user_logged_in() ) {
+				$r .= "\t\t" . wp_nonce_field( 'contact-form_' . $id, '_wpnonce', true, false ) . "\n"; // nonce and referer
+			}
 			$r .= "\t\t<input type='hidden' name='contact-form-id' value='$id' />\n";
 			$r .= "\t\t<input type='hidden' name='action' value='grunion-contact-form' />\n";
 			$r .= "\t</p>\n";
@@ -1299,10 +1290,11 @@ class Grunion_Contact_Form extends Crunion_Contact_Form_Shortcode {
 			wp_schedule_event( time() + 250, 'daily', 'grunion_scheduled_delete' );
 		}
 
-		if ( $is_spam !== TRUE )
+		if ( $is_spam !== TRUE && true === apply_filters( 'grunion_should_send_email', true, $post_id ) ) {
 			wp_mail( $to, "{$spam}{$subject}", $message, $headers );
-		elseif ( apply_filters( 'grunion_still_email_spam', FALSE ) == TRUE ) // don't send spam by default.  Filterable.
+		} elseif ( true === $is_spam && apply_filters( 'grunion_still_email_spam', FALSE ) == TRUE ) { // don't send spam by default.  Filterable.
 			wp_mail( $to, "{$spam}{$subject}", $message, $headers );
+		}
 
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 			return self::success_message( $post_id, $this );
@@ -1581,7 +1573,7 @@ class Grunion_Contact_Form_Field extends Crunion_Contact_Form_Shortcode {
 			$r .= "\t</div>\n";
 		}
 
-		return $r;
+		return apply_filters( 'grunion_contact_form_field_html', $r, $field_label );
 	}
 }
 

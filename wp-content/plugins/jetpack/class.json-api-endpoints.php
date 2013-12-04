@@ -37,12 +37,13 @@ abstract class WPCOM_JSON_API_Endpoint {
 		),
 		'http_envelope' => array(
 			'false' => '',
-			'true'  => 'Some enviroments (like in-browser Javascript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.',
+			'true'  => 'Some environments (like in-browser Javascript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.',
 		),
 		'pretty' => array(
 			'false' => '',
 			'true'  => 'Output pretty JSON',
 		),
+		'meta' => "(string) Optional. Loads data from the endpoints found in the 'meta' part of the response. Comma separated list. Example: meta=site,likes",
 		// Parameter name => description (default value is empty)
 		'callback' => '(string) An optional JSONP callback function.',
 	);
@@ -184,6 +185,16 @@ abstract class WPCOM_JSON_API_Endpoint {
 			break;
 		case 'multipart/form-data' :
 			$return = array_merge( stripslashes_deep( $_POST ), $_FILES );
+			break;
+		case 'application/x-www-form-urlencoded' :
+		case 'application/x-www-form-urlencoded; charset=UTF-8' :
+			//attempt JSON first, since probably a curl command
+			$return = json_decode( $input, true );
+
+			if ( is_null( $return ) ) {
+				wp_parse_str( $input, $return );
+			}
+
 			break;
 		default :
 			wp_parse_str( $input, $return );
@@ -880,6 +891,7 @@ EOPHP;
 			$name        = $author->comment_author;
 			$URL         = $author->comment_author_url;
 			$profile_URL = 'http://en.gravatar.com/' . md5( strtolower( trim( $email ) ) );
+			$nice        = '';
 		} else {
 			if ( isset( $author->post_author ) ) {
 				if ( 0 == $author->post_author )
@@ -902,6 +914,7 @@ EOPHP;
 			$email = $user->user_email;
 			$name  = $user->display_name;
 			$URL   = $user->user_url;
+			$nice  = $user->user_nicename;
 			if ( defined( 'IS_WPCOM' ) && IS_WPCOM ) {
 				$profile_URL = "http://en.gravatar.com/{$user->user_login}";
 			} else {
@@ -917,6 +930,7 @@ EOPHP;
 			'ID'          => (int) $ID,
 			'email'       => $email, // (string|bool)
 			'name'        => (string) $name,
+			'nice_name'   => (string) $nice,
 			'URL'         => (string) esc_url_raw( $URL ),
 			'avatar_URL'  => (string) esc_url_raw( $avatar_URL ),
 			'profile_URL' => (string) esc_url_raw( $profile_URL ),
@@ -1108,6 +1122,7 @@ abstract class WPCOM_JSON_API_Post_Endpoint extends WPCOM_JSON_API_Endpoint {
 		'i_like'         => '(bool) Does the current user like this post?',
 		'is_reblogged'   => '(bool) Did the current user reblog this post?',
 		'is_following'   => '(bool) Is the current user following this blog?',
+		'global_ID'      => '(string) A unique WordPress.com-wide representation of a post.',
 		'featured_image' => '(URL) The URL to the featured image for this post if it has one.',
 		'format'         => array(), // see constructor
 		'geo'            => '(object>geo|false)',
@@ -1330,6 +1345,9 @@ abstract class WPCOM_JSON_API_Post_Endpoint extends WPCOM_JSON_API_Endpoint {
 				break;
 			case 'is_following':
 				$response[$key] = (int) $this->api->is_following( $blog_id );
+				break;
+			case 'global_ID':
+				$response[$key] = (string) $this->api->add_global_ID( $blog_id, $post->ID );
 				break;
 			case 'featured_image' :
 				$image_attributes = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
@@ -2052,7 +2070,7 @@ class WPCOM_JSON_API_Update_Post_Endpoint extends WPCOM_JSON_API_Post_Endpoint {
 						break;
 					case 'update':
 
-						if ( empty( $meta->value ) ) {
+						if ( ! isset( $meta->value ) ) {
 							continue;
 						} elseif ( ! empty( $meta->id ) && ! empty( $existing_meta_item->meta_key ) && current_user_can( 'edit_post_meta', $post_id, $unslashed_existing_meta_key ) ) {
 							update_metadata_by_mid( 'post', $meta->id, $meta->value );
@@ -2741,7 +2759,10 @@ class WPCOM_JSON_API_Update_Comment_Endpoint extends WPCOM_JSON_API_Comment_Endp
 	// /sites/%s/comments/%d             -> $blog_id, $comment_id
 	// /sites/%s/comments/%d/delete      -> $blog_id, $comment_id
 	function callback( $path = '', $blog_id = 0, $object_id = 0 ) {
-		$blog_id = $this->api->switch_to_blog_and_validate_user( $this->api->get_blog_id( $blog_id ) );
+		if ( $this->api->ends_with( $path, '/new' ) )
+			$blog_id = $this->api->switch_to_blog_and_validate_user( $this->api->get_blog_id( $blog_id ), false );
+		else
+			$blog_id = $this->api->switch_to_blog_and_validate_user( $this->api->get_blog_id( $blog_id ) );
 		if ( is_wp_error( $blog_id ) ) {
 			return $blog_id;
 		}
@@ -3011,8 +3032,18 @@ class WPCOM_JSON_API_GET_Site_Endpoint extends WPCOM_JSON_API_Endpoint {
 				$response[$key] = (string) home_url();
 				break;
 			case 'jetpack' :
-				if ( $is_user_logged_in )
+				$response[$key] = false; // magic
+				break;
+			case 'is_private' :
+				if ( defined( 'IS_WPCOM' ) && IS_WPCOM ) {
+					$public_setting = get_option( 'blog_public' );
+					if ( -1 == $public_setting )
+						$response[$key] = true;
+					else
+						$response[$key] = false;
+				} else {
 					$response[$key] = false; // magic
+				}
 				break;
 			case 'post_count' :
 				if ( $is_user_logged_in )
@@ -3022,6 +3053,18 @@ class WPCOM_JSON_API_GET_Site_Endpoint extends WPCOM_JSON_API_Endpoint {
 				if ( $is_user_logged_in )
 					$response[$key] = (string) get_bloginfo( 'language' );
 				break;
+            case 'subscribers_count' :
+				if ( function_exists( 'wpcom_subs_total_wpcom_subscribers' ) ) {
+					$total_wpcom_subs = wpcom_subs_total_wpcom_subscribers(
+						array(
+							'blog_id' => $blog_id,
+						)
+					);
+					$response[$key] = $total_wpcom_subs;
+				} else {
+					$response[$key] = 0; // magic
+				}
+                break;
 			case 'meta' :
 				$response[$key] = (object) array(
 					'links' => (object) array(
@@ -3074,8 +3117,10 @@ new WPCOM_JSON_API_GET_Site_Endpoint( array(
  		'URL'         => '(string) Full URL to the blog',
  		'jetpack'     => '(bool)  Whether the blog is a Jetpack blog or not',
  		'post_count'  => '(int) The number of posts the blog has',
+        'subscribers_count'  => '(int) The number of subscribers the blog has',
 		'lang'        => '(string) Primary language code of the blog',
 		'meta'        => '(object) Meta data',
+		'is_private'  => '(bool) If the blog is a private blog or not',
 	),
 
 	'example_request' => 'https://public-api.wordpress.com/rest/v1/sites/en.blog.wordpress.com/?pretty=1',

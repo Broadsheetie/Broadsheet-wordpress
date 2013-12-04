@@ -5,9 +5,11 @@
  * First Introduced: 2.2
  * Sort Order: 4
  * Requires Connection: Yes
+ * Auto Activate: No
+ * Module Tags: Social
  */
 class Jetpack_Likes {
-	var $version = '20130620a';
+	var $version = '20131104';
 
 	public static function init() {
 		static $instance = NULL;
@@ -513,19 +515,30 @@ class Jetpack_Likes {
 	/**
 	* Load the CSS needed for the wp-admin area.
 	*/
-	function load_admin_css() { ?>
+	function load_admin_css() {
+		include( ABSPATH . WPINC . '/version.php' );
+		?>
 		<style type="text/css">
 			.fixed .column-likes { width: 5em; padding-top: 8px; text-align: center !important; }
 			.fixed .column-stats { width: 5em; }
 			.fixed .column-likes .post-com-count { background-image: none; }
 			.fixed .column-likes .comment-count { background-color: #888; }
 			.fixed .column-likes .comment-count:hover { background-color: #D54E21; }
-			.admin-color-mp6 .fixed .column-likes .post-com-count::after { border: none !important; }
-			.admin-color-mp6 .fixed .column-likes .comment-count { background-color: #bbb; }
-			.admin-color-mp6 .fixed .column-likes .comment-count:hover { background-color: #2ea2cc; }
-			.admin-color-mp6 .fixed .column-likes .vers img { display: none; }
-			.admin-color-mp6 .fixed .column-likes .vers:before {font:20px/1 dashicons;content: '\f155';-webkit-font-smoothing:antialiased;}
-		</style> <?php
+		<?php if ( version_compare( $wp_version, '3.8-alpha', '>=' ) ) : ?>
+			.fixed .column-likes .post-com-count::after { border: none !important; }
+			.fixed .column-likes .comment-count { background-color: #bbb; }
+			.fixed .column-likes .comment-count:hover { background-color: #2ea2cc; }
+			.fixed .column-likes .vers img { display: none; }
+			.fixed .column-likes .vers:before {
+				font: normal 20px/1 dashicons;
+				content: '\f155';
+				speak: none;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		<?php endif; ?>
+		</style>
+		<?php
 	}
 
 	/**
@@ -533,10 +546,14 @@ class Jetpack_Likes {
 	*/
 	function enqueue_admin_scripts() {
 		if ( empty( $_GET['post_type'] ) || 'post' == $_GET['post_type'] || 'page' == $_GET['post_type'] ) {
-			if ( $this->in_jetpack )
+			if ( $this->in_jetpack ) {
 				wp_enqueue_script( 'likes-post-count', plugins_url( 'modules/likes/post-count.js', dirname( __FILE__ ) ), array( 'jquery' ), JETPACK__VERSION );
-			else
+				wp_enqueue_script( 'likes-post-count-jetpack', plugins_url( 'modules/likes/post-count-jetpack.js', dirname( __FILE__ ) ), array( 'likes-post-count' ), JETPACK__VERSION );
+			} else {
+				wp_enqueue_script( 'jquery.wpcom-proxy-request', "/wp-content/js/jquery/jquery.wpcom-proxy-request.js", array('jquery'), NULL, true );
 				wp_enqueue_script( 'likes-post-count', plugins_url( 'likes/post-count.js', dirname( __FILE__ ) ), array( 'jquery' ), JETPACK__VERSION );
+				wp_enqueue_script( 'likes-post-count-wpcom', plugins_url( 'likes/post-count-wpcom.js', dirname( __FILE__ ) ), array( 'likes-post-count', 'jquery.wpcom-proxy-request' ), JETPACK__VERSION );
+			}
 		}
 	}
 
@@ -552,8 +569,7 @@ class Jetpack_Likes {
 			if ( defined( 'IS_WPCOM' ) && IS_WPCOM ) {
 				$blog_id = get_current_blog_id();
 			} else {
-				$jetpack = Jetpack::init();
-				$blog_id = $jetpack->get_option( 'id' );
+				$blog_id = Jetpack_Options::get_option( 'id' );
 			}
 
 			$permalink = get_permalink( get_the_ID() ); ?>
@@ -586,17 +602,12 @@ class Jetpack_Likes {
 		if ( ! $this->is_likes_visible() )
 			return $content;
 
-		$protocol = 'http';
-		if ( is_ssl() )
-			$protocol = 'https';
-
 		if ( defined( 'IS_WPCOM' ) && IS_WPCOM ) {
 			$blog_id = get_current_blog_id();
 			$bloginfo = get_blog_details( (int) $blog_id );
 			$domain = $bloginfo->domain;
 		} else {
-			$jetpack = Jetpack::init();
-			$blog_id = $jetpack->get_option( 'id' );
+			$blog_id = Jetpack_Options::get_option( 'id' );
 			$url = home_url();
 			$url_parts = parse_url( $url );
 			$domain = $url_parts['host'];
@@ -610,12 +621,12 @@ class Jetpack_Likes {
 		*/
 		$uniqid = uniqid();
 
-		$src = sprintf( '%1$s://widgets.wp.com/likes/#blog_id=%2$d&amp;post_id=%3$d&amp;origin=%1$s://%4$s&amp;obj_id=%2$d-%3$d-%5$s', $protocol, $blog_id, $post->ID, $domain, $uniqid );
+		$src = sprintf( '//widgets.wp.com/likes/#blog_id=%1$d&amp;post_id=%2$d&amp;origin=%3$s&amp;obj_id=%1$d-%2$d-%4$s', $blog_id, $post->ID, $domain, $uniqid );
 		$name = sprintf( 'like-post-frame-%1$d-%2$d-%3$s', $blog_id, $post->ID, $uniqid );
 		$wrapper = sprintf( 'like-post-wrapper-%1$d-%2$d-%3$s', $blog_id, $post->ID, $uniqid );
 
 		$html  = "<div class='sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-unloaded' id='$wrapper' data-src='$src' data-name='$name'><h3 class='sd-title'>" . esc_html__( 'Like this:', 'jetpack' ) . '</h3>';
-		$html .= "<div class='post-likes-widget-placeholder' style='height:55px'><span class='button'><span>" . esc_html__( 'Like', 'jetpack' ) . '</span></span> <span class="loading">' . esc_html__( 'Loading...', 'jetpack' ) . '</span></div>';
+		$html .= "<div class='likes-widget-placeholder post-likes-widget-placeholder' style='height:55px'><span class='button'><span>" . esc_html__( 'Like', 'jetpack' ) . '</span></span> <span class="loading">' . esc_html__( 'Loading...', 'jetpack' ) . '</span></div>';
 		$html .= "<span class='sd-text-color'></span><a class='sd-link-color'></a>";
 		$html .= '</div>';
 
@@ -638,8 +649,7 @@ class Jetpack_Likes {
 			$bloginfo = get_blog_details( (int) $blog_id );
 			$domain = $bloginfo->domain;
 		} else {
-			$jetpack = Jetpack::init();
-			$blog_id = $jetpack->get_option( 'id' );
+			$blog_id = Jetpack_Options::get_option( 'id' );
 			$url = home_url();
 			$url_parts = parse_url( $url );
 			$domain = $url_parts['host'];
@@ -678,8 +688,7 @@ class Jetpack_Likes {
 			$bloginfo = get_blog_details( (int) $blog_id );
 			$domain = $bloginfo->domain;
 		} else {
-			$jetpack = Jetpack::init();
-			$blog_id = $jetpack->get_option( 'id' );
+			$blog_id = Jetpack_Options::get_option( 'id' );
 			$url = home_url();
 			$url_parts = parse_url( $url );
 			$domain = $url_parts['host'];
@@ -706,8 +715,17 @@ class Jetpack_Likes {
 		if ( is_ssl() )
 			$protocol = 'https';
 
+		if ( version_compare( $GLOBALS['wp_version'], '3.8-alpha', '>=' ) ) {
+			add_filter( 'mp6_enabled', '__return_true', 97 );
+		}
+
 		$locale = ( '' == get_locale() || 'en' == get_locale() ) ? '' : '&amp;lang=' . strtolower( substr( get_locale(), 0, 2 ) );
         $src = sprintf( '%1$s://widgets.wp.com/likes/master.html?ver=%2$s#ver=%2$s%3$s&amp;mp6=%4$d', $protocol, $this->version, $locale, apply_filters( 'mp6_enabled', 0 ) );
+
+		// Tidy up after ourselves.
+		if ( version_compare( $GLOBALS['wp_version'], '3.8-alpha', '>=' ) ) {
+			remove_filter( 'mp6_enabled', '__return_true', 97 );
+		}
 
         $likersText = wp_kses( __( '<span>%d</span> bloggers like this:', 'jetpack' ), array( 'span' => array() ) );
 ?>
@@ -716,6 +734,7 @@ class Jetpack_Likes {
 		<script type="text/javascript">
 		//<![CDATA[
 			var jetpackLikesWidgetQueue = [];
+			var jetpackLikesWidgetBatch = [];
 			var jetpackLikesMasterReady = false;
 
 			function JetpackLikespostMessage( message, target ) {
@@ -734,6 +753,38 @@ class Jetpack_Likes {
 					data: message,
 					origin: '*'
 				} );
+			}
+
+			function JetpackLikesBatchHandler() {
+				var requests = [];
+				jQuery( 'div.jetpack-likes-widget-unloaded' ).each( function( i ) {
+					if ( jetpackLikesWidgetBatch.indexOf( this.id ) > -1 )
+						return;
+					jetpackLikesWidgetBatch.push( this.id );
+					var regex = /like-(post|comment)-wrapper-(\d+)-(\d+)-(\w+)/;
+					var match = regex.exec( this.id );
+					if ( ! match || match.length != 5 )
+						return;
+
+					var info = {
+						blog_id: match[2],
+						width:   this.width
+					};
+
+					if ( 'post' == match[1] ) {
+						info.post_id = match[3];
+					} else if ( 'comment' == match[1] ) {
+						info.comment_id = match[3];
+					}
+
+					info.obj_id = match[4];
+
+					requests.push( info );
+				});
+
+				if ( requests.length > 0 ) {
+					JetpackLikespostMessage( { event: 'initialBatch', requests: requests }, window.frames['likes-master'] );
+				}
 			}
 
 			function JetpackLikesMessageListener( event ) {
@@ -780,30 +831,7 @@ class Jetpack_Likes {
 
 						JetpackLikespostMessage( stylesData, window.frames[ 'likes-master' ] );
 
-						var requests = [];
-						jQuery( '.jetpack-likes-widget-wrapper' ).each( function( i ) {
-							var regex = /like-(post|comment)-wrapper-(\d+)-(\d+)-(\w+)/;
-							var match = regex.exec( this.id );
-							if ( ! match || match.length != 5 )
-								return;
-
-							var info = {
-								blog_id: match[2],
-								width:   this.width
-							};
-
-							if ( 'post' == match[1] ) {
-								info.post_id = match[3];
-							} else if ( 'comment' == match[1] ) {
-								info.comment_id = match[3];
-							}
-
-							info.obj_id = match[4];
-
-							requests.push( info );
-						});
-
-						JetpackLikespostMessage( { event: 'initialBatch', requests: requests }, window.frames['likes-master'] );
+						JetpackLikesBatchHandler();
 
 						jQuery( document ).on( 'inview', 'div.jetpack-likes-widget-unloaded', function() {
 							jetpackLikesWidgetQueue.push( this.id );
@@ -812,7 +840,6 @@ class Jetpack_Likes {
 				}
 
 				if ( 'showLikeWidget' == event.event ) {
-					setTimeout( JetpackLikesWidgetQueueHandler, 10 );
 					jQuery( '#' + event.id + ' .post-likes-widget-placeholder'  ).fadeOut( 'fast', function() {
 						jQuery( '#' + event.id + ' .post-likes-widget' ).fadeIn( 'fast', function() {
 							JetpackLikespostMessage( { event: 'likeWidgetDisplayed', blog_id: event.blog_id, post_id: event.post_id, obj_id: event.obj_id }, window.frames['likes-master'] );
@@ -892,6 +919,9 @@ class Jetpack_Likes {
 						return;
 					}
 				} else if ( jQuery( 'div.jetpack-likes-widget-unloaded' ).length > 0 ) {
+					// Grab any unloaded widgets for a batch request
+					JetpackLikesBatchHandler();
+
 					// Get the next unloaded widget
 					wrapperID = jQuery( 'div.jetpack-likes-widget-unloaded' ).first()[0].id;
 					if ( ! wrapperID ) {
@@ -899,6 +929,11 @@ class Jetpack_Likes {
 						setTimeout( JetpackLikesWidgetQueueHandler, 500 );
 						return;
 					}
+				}
+
+				if ( 'undefined' === typeof wrapperID ) {
+					setTimeout( JetpackLikesWidgetQueueHandler, 500 );
+					return;
 				}
 
 				var $wrapper = jQuery( '#' + wrapperID );
@@ -1027,6 +1062,11 @@ class Jetpack_Likes {
 					$enabled = false;
 				}
 			}
+		}
+
+		// Check that the post is a public, published post.
+		if ( 'publish' != $post->post_status ) {
+			$enabled = false;
 		}
 
 		// Run through the sharing filters

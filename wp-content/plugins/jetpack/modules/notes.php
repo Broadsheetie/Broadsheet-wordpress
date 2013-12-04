@@ -5,6 +5,8 @@
  * Sort Order: 1
  * First Introduced: 1.9
  * Requires Connection: Yes
+ * Auto Activate: Yes
+ * Module Tags: Other
  */
 
 if ( !defined( 'JETPACK_NOTES__CACHE_BUSTER' ) ) define( 'JETPACK_NOTES__CACHE_BUSTER', JETPACK__VERSION . '-' . gmdate( 'oW' ) );

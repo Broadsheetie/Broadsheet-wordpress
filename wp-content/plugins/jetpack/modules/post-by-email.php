@@ -6,6 +6,8 @@
  * First Introduced: 2.0
  * Sort Order: 4
  * Requires Connection: Yes
+ * Auto Activate: Yes
+ * Module Tags: Writing
  */
 
 add_action( 'jetpack_modules_loaded', array( 'Jetpack_Post_By_Email', 'init' ) );
