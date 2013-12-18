@@ -1,4 +1,7 @@
 <?php
+/* Don't show the admin bar */
+show_admin_bar(false);
+
 if ( ! function_exists( 'twentytwelve_entry_meta' ) ) :
 /**
  * Prints HTML with meta information for current post: categories, tags, permalink, author, and date.
