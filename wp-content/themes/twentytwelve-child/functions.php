@@ -112,7 +112,6 @@ Note that we're not online 24/7 so your comment may not be approved for a little
 
 			<section class="comment-content comment">
 				<?php comment_text(); ?>
-				<?php edit_comment_link( __( 'Edit', 'twentytwelve' ), '<p class="edit-link">', '</p>' ); ?>
 			</section><!-- .comment-content -->
 
 			<div class="reply">
