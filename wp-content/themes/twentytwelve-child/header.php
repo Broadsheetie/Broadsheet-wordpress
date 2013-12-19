@@ -77,7 +77,7 @@ googletag.enableServices();
 </script>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class(); ?> id="body_id">
 <div id="page" class="hfeed site">
 	<header id="masthead" class="site-header" role="banner">
         <center>
