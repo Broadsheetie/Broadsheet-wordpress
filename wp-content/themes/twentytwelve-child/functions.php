@@ -167,3 +167,25 @@ Note that we're not online 24/7 so your comment may not be approved for a little
 	endswitch; // end comment_type check
 }
 endif;
+
+/**
+* Displays a list of contributors.
+*
+* Based on http://www.wpbeginner.com/wp-tutorials/how-to-display-an-author-list-with-avatars-in-wordpress-contributors-page/
+*
+* @since BS 3.0
+*/
+
+function contributors() {
+	global $wpdb;
+
+	$authors = $wpdb->get_results("SELECT ID, user_nicename from $wpdb->users ORDER BY display_name");
+
+	foreach($authors as $author) {
+		echo "<li>";
+		echo "<a href=\"".get_bloginfo('url')."/?author=" . $author->ID . "\">";
+		the_author_meta('display_name', $author->ID);
+		echo "</a>";
+		echo "</li>";
+	}
+}

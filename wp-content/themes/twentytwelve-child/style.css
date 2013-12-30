@@ -141,3 +141,20 @@ a {
 .footer-info {
 	text-align: center;
 }
+
+#authorlist li {
+	clear: left;
+	float: left;
+	margin: 0 0 5px 0;
+}
+
+#authorlist img.photo {
+	width: 40px;
+	height: 40px;
+	float: left;
+}
+
+#authorlist div.authname {
+	margin: 20px 0 0 10px;
+	float: left;
+}
