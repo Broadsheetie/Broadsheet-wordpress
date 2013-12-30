@@ -19,6 +19,11 @@ body .site {
     margin-top: 0px;
 }
 
+a {
+	text-decoration: none;
+	color: #7f7f7f;
+}
+
 .site {
     padding: 0 10px;
 }
@@ -101,6 +106,10 @@ body .site {
 
 .entry-header .entry-title a {
     color: black;
+}
+
+.entry-meta a {
+	color: #1982d1;
 }
 
 .widget-area {
