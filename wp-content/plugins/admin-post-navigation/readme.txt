@@ -1,28 +1,25 @@
 === Admin Post Navigation ===
 Contributors: coffee2code
-Donate link: http://coffee2code.com/donate
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6ARCFJ9TX3522
 Tags: admin, navigation, post, next, previous, edit, post types, coffee2code
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 3.0
-Tested up to: 3.5
-Stable tag: 1.7.2
-Version: 1.7.2
+Tested up to: 3.8
+Stable tag: 1.8
 
 Adds links to navigate to the next and previous posts when editing a post in the WordPress admin.
 
 
 == Description ==
 
-Adds links to navigate to the next and previous posts when editing a post in the WordPress admin.
+This plugin adds "&larr; Previous" and "Next &rarr;" links to the "Edit Post" admin page if a previous and next post are present, respectively. The link titles (visible when hovering over the links) reveal the title of the previous/next post. The links link to the "Edit Post" admin page for the previous/next posts so that you may edit them.
 
-This plugin adds "&larr; Previous" and "Next &rarr;" links to the "Edit Post" admin page if a previous and next post are present, respectively.  The link titles (visible when hovering over the links) reveal the title of the previous/next post.  The links link to the "Edit Post" admin page for the previous/next posts so that you may edit them.
-
-By default, a previous/next post is determined by the next lower/higher valid post based on relative sequential post ID and which the user can edit.  Other post criteria such as post type (draft, pending, etc), publish date, post author, category, etc, are not taken into consideration when determining the previous or next post. How posts are navigated, and post types and post statuses to restrict navigation can be customized via filters (see Filters section).
+By default, a previous/next post is determined by the next lower/higher valid post based on relative sequential post ID and which the user can edit. Other post criteria such as post type (draft, pending, etc), publish date, post author, category, etc, are not taken into consideration when determining the previous or next post. How posts are navigated, and post types and post statuses to restrict navigation can be customized via filters (see Filters section).
 
 NOTE: Be sure to save the post currently being edited before navigating away to the previous/next post.
 
-Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/admin-post-navigation/) | [Plugin Directory Page](http://wordpress.org/extend/plugins/admin-post-navigation/) | [Author Homepage](http://coffee2code.com)
+Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/admin-post-navigation/) | [Plugin Directory Page](http://wordpress.org/plugins/admin-post-navigation/) | [Author Homepage](http://coffee2code.com)
 
 
 == Installation ==
@@ -51,7 +48,7 @@ The plugin is further customizable via four filters. Typically, these customizat
 
 = c2c_admin_post_navigation_orderby (filter) =
 
-The 'c2c_admin_post_navigation_orderby' filter allows you to change the post field used in the ORDER BY clause for the SQL to find the previous/next post.  By default this is 'ID' for non-hierarchical post types (such as posts) and 'post_title' for hierarchical post types (such as pages).  If you wish to change this, hook this filter.  This is not typical usage for most users.
+The 'c2c_admin_post_navigation_orderby' filter allows you to change the post field used in the ORDER BY clause for the SQL to find the previous/next post. By default this is 'ID' for non-hierarchical post types (such as posts) and 'post_title' for hierarchical post types (such as pages). If you wish to change this, hook this filter. This is not typical usage for most users.
 
 Arguments:
 
@@ -66,7 +63,7 @@ function order_apn_by_post_date( $field ) {
 
 = c2c_admin_post_navigation_post_statuses (filter) =
 
-The 'c2c_admin_post_navigation_post_statuses' filter allows you to modify the list of post_statuses used as part of the search for the prev/next post.  By default this array includes 'draft', 'future', 'pending', 'private', and 'publish'.  If you wish to change this, hook this filter.  This is not typical usage for most users.
+The 'c2c_admin_post_navigation_post_statuses' filter allows you to modify the list of post_statuses used as part of the search for the prev/next post. By default this array includes 'draft', 'future', 'pending', 'private', and 'publish'. If you wish to change this, hook this filter. This is not typical usage for most users.
 
 Arguments:
 
@@ -85,7 +82,7 @@ function change_apn_post_status( $post_statuses ) {
 
 = c2c_admin_post_navigation_post_types (filter) =
 
-The 'c2c_admin_post_navigation_post_types' filter allows you to modify the list of post_types used as part of the search for the prev/next post.  By default this array includes all available post types.  If you wish to change this, hook this filter.
+The 'c2c_admin_post_navigation_post_types' filter allows you to modify the list of post_types used as part of the search for the prev/next post. By default this array includes all available post types. If you wish to change this, hook this filter.
 
 Arguments:
 
@@ -131,6 +128,16 @@ function override_apn_display( $text ) {
 
 
 == Changelog ==
+
+= 1.8 (2013-12-29) =
+* Hide screen option checkbox for metabox if JS hides metabox for inline use
+* Improve spacing within its metabox (when shown if JS is disabled)
+* Note compatibility through WP 3.8+
+* Update copyright date (2014)
+* Change donate link
+* Minor readme.txt tweaks (mostly spacing)
+* Update banner
+* Update screenshots
 
 = 1.7.2 =
 * Add check to prevent execution of code if file is directly accessed
@@ -231,6 +238,9 @@ function override_apn_display( $text ) {
 
 
 == Upgrade Notice ==
+
+= 1.8 =
+Minor update: hid screen options checkbox when JS is enabled since metabox is hidden; improved metabox spacing; noted compatibility through WP 3.8+
 
 = 1.7.2 =
 Trivial update: noted compatibility through WP 3.5+

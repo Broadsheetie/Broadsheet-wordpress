@@ -2,11 +2,11 @@
 /**
  * @package Admin_Post_Navigation
  * @author Scott Reilly
- * @version 1.7.2
+ * @version 1.8
  */
 /*
 Plugin Name: Admin Post Navigation
-Version: 1.7.2
+Version: 1.8
 Plugin URI: http://coffee2code.com/wp-plugins/admin-post-navigation/
 Author: Scott Reilly
 Author URI: http://coffee2code.com/
@@ -16,20 +16,24 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Description: Adds links to navigate to the next and previous posts when editing a post in the WordPress admin.
 
-Compatible with WordPress 3.0 through 3.5+.
+Compatible with WordPress 3.0 through 3.8+.
 
 =>> Read the accompanying readme.txt file for instructions and documentation.
 =>> Also, visit the plugin's homepage for additional information and updates.
-=>> Or visit: http://wordpress.org/extend/plugins/admin-post-navigation/
+=>> Or visit: http://wordpress.org/plugins/admin-post-navigation/
 
 TODO:
+	* Hide screen option checkbox for metabox if metabox is being hidden
 	* Add screen option allowing user selection of post navigation order
+	* Add unit tests
 	* Put CSS into enqueuable .css file
 	* Put JS into enqueueable .js file
+	* Add dropdown to post nav links to allow selecting different types of things
+	  to navigate to (e.g. next draft (if looking at a draft), next in category X)
 */
 
 /*
-	Copyright (c) 2008-2013 by Scott Reilly (aka coffee2code)
+	Copyright (c) 2008-2014 by Scott Reilly (aka coffee2code)
 
 	This program is free software; you can redistribute it and/or
 	modify it under the terms of the GNU General Public License
@@ -38,7 +42,7 @@ TODO:
 
 	This program is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 	GNU General Public License for more details.
 
 	You should have received a copy of the GNU General Public License
@@ -63,7 +67,7 @@ class c2c_AdminPostNavigation {
 	 * @since 1.7
 	 */
 	public static function version() {
-		return '1.7.2';
+		return '1.8';
 	}
 
 	/**
@@ -179,6 +183,7 @@ class c2c_AdminPostNavigation {
 		#admin-post-nav {margin-left:20px;}
 		#adminpostnav #admin-post-nav {margin-left:0;}
 		h2 #admin-post-nav {font-size:0.6em;}
+		.inside #admin-post-nav a {top:0;margin-top:4px;display:inline-block;}
 		</style>
 
 HTML;
@@ -197,7 +202,7 @@ HTML;
 		<script type="text/javascript">
 		jQuery(document).ready(function($) {
 			$('#admin-post-nav').appendTo($('h2'));
-			$('#adminpostnav').hide();
+			$('#adminpostnav, label[for="adminpostnav-hide"]').hide();
 		});
 		</script>
 
