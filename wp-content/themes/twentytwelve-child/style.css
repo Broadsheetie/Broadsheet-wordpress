@@ -99,6 +99,13 @@ a {
 	}
 }
 
+.entry-content p,
+.entry-summary p,
+.comment-content p,
+.mu_register p {
+	font-size: 16px;
+}
+
 .entry-header .entry-title {
     font-size: 25px;
     font-size: 1.75rem;
