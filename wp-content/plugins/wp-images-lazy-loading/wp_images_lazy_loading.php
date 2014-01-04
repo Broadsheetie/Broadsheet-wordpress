@@ -71,7 +71,7 @@ EOF;
 		echo <<<EOF
 <script type="text/javascript">
 (function($){
-  $("img.lazy").show().lazyload({effect: "fadeIn", threshold : 0});
+  $("img.lazy").show().lazyload({effect: "fadeIn", threshold : 300});
 })(jQuery);
 </script>
 
