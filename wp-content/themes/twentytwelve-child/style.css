@@ -14,6 +14,12 @@ body {
     background-color: white;
 }
 
+.entry-content blockquote,
+.comment-content blockquote {
+	font-family: Georgia, "Bitstream Charter", serif;
+	font-style: italic;
+}
+
 body .site {
     box-shadow: none;
     margin-top: 0px;
@@ -50,6 +56,11 @@ a {
 .hide-small {
 	display: inline;
 }
+
+.commentlist .children {
+	margin-left: 10px;
+}
+
 @media screen and (max-width: 624px) {
     .hide-small {
         display: none;
@@ -94,10 +105,26 @@ a {
 		padding: 0px;
 	}
 	
+	.site {
+		max-width: 980px;
+	}
+	
 	.site-content {
 		width: 640px;
 		padding-left: 10px;
 	}
+	
+	.widget-area {
+    	margin-right: 10px;
+	}
+}
+
+.comments-area article {
+    margin: 1rem 0;
+}
+
+.comments-area article header {
+	margin: 0 0 1.5rem;
 }
 
 .entry-content img,
@@ -110,16 +137,19 @@ img.wp-post-image {
 	box-shadow: none;
 }
 
-.entry-content p,
-.entry-summary p,
-.comment-content p,
-.mu_register p {
-	font-size: 16px;
+.entry-content,
+.entry-summary,
+.comment-content,
+.mu_register {
+	font-size: 17px;
+	font-weight: 300;
 }
 
 .entry-header .entry-title {
     font-size: 25px;
     font-size: 1.75rem;
+    padding-bottom: 1rem;
+    font-weight: bold;
 }
 
 .entry-header .entry-title a {
