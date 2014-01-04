@@ -87,7 +87,8 @@
             var $self = $(self);
 
             self.loaded = false;
-
+			$self.css('display', 'block');
+			
             /* If no src attribute given use data:uri. */
             if ($self.attr("src") === undefined || $self.attr("src") === false) {
                 if ($self.is("img")) {
@@ -112,7 +113,7 @@
                             } else {
                                 $self.css("background-image", "url('" + original + "')");
                             }
-                            $self[settings.effect](settings.effect_speed);
+                            $self[settings.effect](settings.effect_speed).css('display', 'block');
 
                             self.loaded = true;
 
