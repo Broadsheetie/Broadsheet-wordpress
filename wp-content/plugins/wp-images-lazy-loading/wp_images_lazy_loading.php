@@ -1,5 +1,4 @@
 <?php
-
   /*
   Plugin Name: WP images lazy loading
   Plugin URI: http://www.petrichorpost.com
@@ -34,7 +33,7 @@ EOF;
 			'jquery_lazy_load',
 			plugins_url('/js/jquery.lazyload.min.js', __FILE__),
 			array('jquery'),
-			'1.9.0' // version of the lazyload script from https://github.com/tuupola/jquery_lazyload
+			'1.9.1' // version of the lazyload script from https://github.com/tuupola/jquery_lazyload
 		);
 	}
 
@@ -72,7 +71,7 @@ EOF;
 		echo <<<EOF
 <script type="text/javascript">
 (function($){
-  $("img.lazy").show().lazyload({effect: "fadeIn"});
+  $("img.lazy").show().lazyload({effect: "fadeIn", threshold : 0});
 })(jQuery);
 </script>
 
@@ -80,6 +79,8 @@ EOF;
 	}
 }
 
-new jQueryLazyLoad();
-
+if (!isset($_COOKIE["no_lazy_load"]))
+{
+	$jQueryLazyLoad = new jQueryLazyLoad();
+}
 ?>
