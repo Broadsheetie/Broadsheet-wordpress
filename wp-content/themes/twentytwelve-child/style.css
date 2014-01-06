@@ -27,7 +27,11 @@ body .site {
 
 a {
 	text-decoration: none;
-	color: #7f7f7f;
+	color: #1982d1;
+}
+
+strong {
+    font-weight: 700;
 }
 
 .site {
@@ -57,10 +61,6 @@ a {
 	display: inline;
 }
 
-.commentlist .children {
-	margin-left: 10px;
-}
-
 @media screen and (max-width: 624px) {
     .hide-small {
         display: none;
@@ -71,6 +71,10 @@ a {
         padding: 13px 5px 12px 5px;
         font-weight: bold;
     }
+    
+	.commentlist .children {
+		margin-left: 15px;
+	}
 }
 
 @media screen and (min-width: 624px) {
@@ -162,6 +166,10 @@ img.wp-post-image {
 
 .widget-area {
     min-width: 300px;
+}
+
+.widget-area .widget a {
+    color: #1982d1;
 }
 
 .widget-area .widget,
