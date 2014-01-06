@@ -9,6 +9,8 @@
   */
 
 class jQueryLazyLoad {
+	public static $has_skipped_first = false;
+	
 	var $do_footer = false;
 
 	function __construct() {
@@ -46,6 +48,11 @@ EOF;
 		// set flag indicating there are images to be replaced
 		$this->do_footer = true;
 
+		if (!self::$has_skipped_first) {
+			self::$has_skipped_first = true;
+			return $matches[0];
+		}
+		
 		// alter original img tag:
 		//   - add empty class attribute if no existing class attribute
 		//   - set src to placeholder image
@@ -53,7 +60,7 @@ EOF;
 		if (!preg_match('/class\s*=\s*"/i', $matches[0])) {
 			$class_attr = 'class="" ';
 		}
-		$replacement = $matches[1] . $class_attr . 'src="' . plugins_url('/images/grey.gif', __FILE__) . '" data-original' . substr($matches[2], 3) . $matches[3];
+		$replacement = $matches[1] . $class_attr . 'src="' . plugins_url('/images/white.gif', __FILE__) . '" data-original' . substr($matches[2], 3) . $matches[3];
 
 		// add "lazy" class to existing class attribute
 		$replacement = preg_replace('/class\s*=\s*"/i', 'class="lazy ', $replacement);
@@ -71,7 +78,7 @@ EOF;
 		echo <<<EOF
 <script type="text/javascript">
 (function($){
-  $("img.lazy").show().lazyload({effect: "fadeIn", threshold : 300});
+  $("img.lazy").show().lazyload({effect: "fadeIn", threshold : $(window).height()});
 })(jQuery);
 </script>
 
