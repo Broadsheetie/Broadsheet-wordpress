@@ -79,6 +79,18 @@ EOF;
 <script type="text/javascript">
 (function($){
   $("img.lazy").show().lazyload({effect: "fadeIn", threshold : $(window).height()});
+  
+  $(function() {
+    $("img.lazy").lazyload({
+        event : "sporty"
+    });
+});
+
+$(window).bind("load", function() {
+    var timeout = setTimeout(function() {
+        $("img.lazy").trigger("sporty")
+    }, 5000);
+});
 })(jQuery);
 </script>
 
