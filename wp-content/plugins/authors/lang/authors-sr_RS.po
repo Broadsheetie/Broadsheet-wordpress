@@ -1,0 +1,153 @@
+# Translation of the WordPress plugin Authors Widget 2.0 by Gavriel Fleischer.
+# Copyright (C) 2010 Gavriel Fleischer
+# This file is distributed under the same license as the Authors Widget package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Authors Widget 2.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/authors\n"
+"POT-Creation-Date: 2010-08-13 09:47+0000\n"
+"PO-Revision-Date: 2013-10-17 12:33+0100\n"
+"Last-Translator: Borisa Djuraskovic <borisad@webhostinghub.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"Language: de_DE\n"
+"X-Generator: Poedit 1.5.7\n"
+
+#: authors.php:143
+msgid "Select Author..."
+msgstr "Izaberite autora"
+
+#: authors.php:239
+#, php-format
+msgid "Posts by %s"
+msgstr "Postovi od strne %s"
+
+#: authors.php:299 authors.php:505
+msgid "Authors"
+msgstr "Autori"
+
+#: authors.php:335
+#, php-format
+msgid "Powered by %s"
+msgstr "Omogućeno od strane %s"
+
+#: authors.php:335
+msgid "Authors Widget Plugin for Wordpress"
+msgstr "Authors Widget Plugin za Wordpress"
+
+#. #-#-#-#-#  plugin.pot (Authors Widget 2.0)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: authors.php:335
+msgid "Authors Widget"
+msgstr "Authors Widget"
+
+#: authors.php:440
+msgid "Title"
+msgstr "Naslov"
+
+#: authors.php:442
+msgid "Format"
+msgstr "Format"
+
+#: authors.php:443
+msgid "List"
+msgstr "Lista"
+
+#: authors.php:445
+msgid "Cloud"
+msgstr "Cloud"
+
+#: authors.php:447
+msgid "Dropdown"
+msgstr "Dropdown"
+
+#: authors.php:450
+msgid "Order by"
+msgstr "Naručeno od starne"
+
+#: authors.php:451
+msgid "Display name"
+msgstr "Prikaži ime"
+
+#: authors.php:452
+msgid "First name"
+msgstr "Ime"
+
+#: authors.php:453
+msgid "Last name"
+msgstr "Prezime"
+
+#: authors.php:454
+msgid "Post count"
+msgstr "Broj postova"
+
+#: authors.php:456
+msgid "Number of authors to show"
+msgstr "Broja autora za prikazivanje"
+
+#: authors.php:457
+msgid "Show full name"
+msgstr "Prikaži celo ime"
+
+#: authors.php:458
+msgid "Show avatar"
+msgstr "Prikaži avatara"
+
+#: authors.php:459
+msgid "Avatar size"
+msgstr "Veličina avatara"
+
+#: authors.php:460
+msgid "Show RSS links"
+msgstr "Prikaži RSS linkove"
+
+#: authors.php:461
+msgid "Show post counts"
+msgstr "Prikaži brojanje postova"
+
+#: authors.php:462
+msgid "Exclude admin"
+msgstr "Isljučiti admina"
+
+#: authors.php:463
+msgid "Exclude"
+msgstr "Isključiti"
+
+#: authors.php:464
+msgid "Hide credit"
+msgstr "Sakriti kredit"
+
+#: authors.php:465
+msgid "Donate"
+msgstr "Donirati"
+
+#: authors.php:503
+msgid "A list of the authors"
+msgstr "Lista autora"
+
+#. Plugin URI of the plugin/theme
+msgid "http://blog.fleischer.hu/wordpress/authors/"
+msgstr "http://blog.fleischer.hu/wordpress/authors/"
+
+#. Description of the plugin/theme
+msgid ""
+"Authors Widget shows the list or cloud of the authors, with the number of "
+"posts, link to RSS feed next to their name, avatar. It is useful in a multi-"
+"author blog, where you want to have the list in the sidemenu."
+msgstr ""
+"Authors Widget prikazuje listu ili cloud autora sa brojem postova link za "
+"RSS feed pored imena avatara. Korisno je za blog sa više autora kada želite "
+"da imate listu sa strane."
+
+#. Author of the plugin/theme
+msgid "Gavriel Fleischer"
+msgstr "Gavriel Fleischer"
+
+#. Author URI of the plugin/theme
+msgid "http://blog.fleischer.hu/gavriel/"
+msgstr "http://blog.fleischer.hu/gavriel/"
