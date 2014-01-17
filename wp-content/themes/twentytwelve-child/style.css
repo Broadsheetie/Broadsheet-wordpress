@@ -15,7 +15,7 @@ body {
 }
 
 body.custom-font-enabled {
-    font-family: Helvetica,Arial,serif;
+	font-family: Helvetica,Arial,serif;
 }
 
 .entry-content blockquote,
@@ -217,4 +217,9 @@ img.wp-post-image {
 #authorlist div.authname {
 	margin: 20px 0 0 10px;
 	float: left;
+}
+
+
+.fb-like iframe {
+    max-width: inherit;
 }

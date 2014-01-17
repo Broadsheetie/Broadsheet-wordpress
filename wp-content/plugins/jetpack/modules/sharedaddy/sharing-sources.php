@@ -692,6 +692,7 @@ class Share_Facebook extends Sharing_Source {
 
 	public function get_display( $post ) {
 		$share_url = $this->get_share_url( $post->ID );
+
 		if ( $this->smart ) {
 			$url = $this->http() . '://www.facebook.com/plugins/like.php?href=' . rawurlencode( $share_url ) . '&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;height=21';
 
@@ -727,8 +728,10 @@ class Share_Facebook extends Sharing_Source {
 			}
 
 			$url .= '&amp;width='.$inner_w;
-			return '<div class="like_button"><iframe src="'.$url.'" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:'.( $inner_w + 6 ).'px; height:21px;" allowTransparency="true"></iframe></div>';
-		}
+			//return '<div class="fb-like like_button"><iframe src="'.$url.'" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:'.( $inner_w + 6 ).'px; height:21px;" allowTransparency="true"></iframe></div>';
+            return '<div class="fb-like like_button" data-href="' . $share_url  . '" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>';
+
+        }
 
 		if ( 'icon-text' == $this->button_style || 'text' == $this->button_style )
 			sharing_register_post_for_share_counts( $post->ID );
