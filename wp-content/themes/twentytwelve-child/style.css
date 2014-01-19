@@ -106,7 +106,7 @@ strong {
 
 @media screen and (min-width: 960px) {
 	.hide-large {
-        display: inline;
+        display: none;
     }
     
 	body .site {
@@ -222,4 +222,41 @@ img.wp-post-image {
 
 .fb-like iframe {
     max-width: inherit;
+}
+
+/* Comments link */
+.entry-header .comments-link a {
+	background: #eee url(images/comment-bubble.png) no-repeat;
+	color: #666;
+	font-size: 13px;
+	font-weight: normal;
+	line-height: 35px;
+	overflow: hidden;
+	padding: 0 0 0;
+	float: right;
+	top: 1.5em;
+	right: 0;
+	text-align: center;
+	text-decoration: none;
+	width: 43px;
+	height: 36px;
+}
+.entry-header .comments-link a:hover,
+.entry-header .comments-link a:focus,
+.entry-header .comments-link a:active {
+	background-color: #1982d1;
+	color: #fff;
+	color: rgba(255,255,255,0.8);
+}
+.entry-header .comments-link .leave-reply {
+	visibility: hidden;
+}
+
+.post-details {
+	float: left; 
+	margin-bottom: 10px;
+}
+
+.post-details-title {
+	max-width:590px;
 }

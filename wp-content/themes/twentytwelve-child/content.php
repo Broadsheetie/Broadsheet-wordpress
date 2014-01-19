@@ -17,16 +17,27 @@
 		</div>
 		<?php endif; ?>
 		<header class="entry-header">
-			<?php if ( is_single() ) : ?>
-			<h1 class="entry-title"><?php the_title(); ?></h1>
-			<?php else : ?>
-			<h1 class="entry-title">
-				<a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
-			</h1>
-			<?php endif; // is_single() ?>
-			<?php broadsheet_entry_meta(); ?>
-			<?php if ( comments_open() ) : ?> | <?php comments_popup_link( '<span class="leave-reply">' . __( 'Leave a reply', 'twentytwelve' ) . '</span>', __( '1 Reply', 'twentytwelve' ), __( '% Replies', 'twentytwelve' ) ); ?>
-			<?php endif; // comments_open() ?>
+			<div>
+				<div class="post-details">
+					<div class="post-details-title">
+						<?php if ( is_single() ) : ?>
+						<h1 class="entry-title"><?php the_title(); ?></h1>
+						<?php else : ?>
+						<h1 class="entry-title">
+							<a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
+						</h1>
+						<?php endif; // is_single() ?>
+						<?php broadsheet_entry_meta(); ?>
+						<?php if ( comments_open() ) : ?><span class="hide-large"> | <?php comments_popup_link( '<span class="leave-reply">' . __( 'Leave a reply', 'twentytwelve' ) . '</span>', __( '1 Reply', 'twentytwelve' ), __( '% Replies', 'twentytwelve' ) ); ?></span>
+						<?php endif; // comments_open() ?>
+					</div>
+				</div>
+				<?php if ( comments_open() ) : ?>
+				<div class="hide-small comments-link">
+					<?php comments_popup_link( '<span class="leave-reply">' . __( 'Reply', 'twentyeleven' ) . '</span>', _x( '1', 'comments number', 'twentyeleven' ), _x( '%', 'comments number', 'twentyeleven' ) ); ?>
+				</div>
+				<?php endif; ?>
+			</div>
 		</header><!-- .entry-header -->
 
 		<?php if ( is_search() ) : // Only display Excerpts for Search ?>
