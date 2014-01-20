@@ -515,7 +515,7 @@ function widget_authors_list_authors($args = '') {
 		if ( !empty( $include ) ) {
 			$include = explode( ',', $include);
 			foreach ( $include as $key => $val ) {
-				if ( !is_int( $val ) ) {
+				if ( !is_numeric( $val ) ) {
 					$user = get_user_by( 'login', $val );
 					$include[$key] = $user->ID;
 				}
@@ -524,7 +524,7 @@ function widget_authors_list_authors($args = '') {
 		if ( !empty( $exclude ) ) {
 			$exclude = explode( ',', $exclude);
 			foreach ( $exclude as $key => $val ) {
-				if ( !is_int( $val ) ) {
+				if ( !is_numeric( $val ) ) {
 					$user = get_user_by( 'login', $val );
 					$exclude[$key] = $user->ID;
 				}
