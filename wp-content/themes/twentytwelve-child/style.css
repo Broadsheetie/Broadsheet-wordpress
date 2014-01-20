@@ -260,3 +260,8 @@ img.wp-post-image {
 .post-details-title {
 	max-width:590px;
 }
+
+.entry-summary,
+.entry-content {
+	clear: both;
+}
