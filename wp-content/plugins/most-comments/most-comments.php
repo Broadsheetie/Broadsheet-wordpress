@@ -90,7 +90,7 @@ function most_comments($limit = 5, $show_pass_post = 0, $duration = 0, $exclude_
 						$temp = stripslashes($most_comments_options['most_comments_template']);
 						$temp = str_replace("%COMMENT_COUNT%", $comment_count, $temp);
 						$temp = str_replace("%POST_TITLE%", $post_title, $temp);
-						$temp = str_replace("%POST_URL%", $permalink, $temp);
+						$temp = str_replace("%POST_URL%", $permalink.'?utm_source=internal&utm_medium=web&utm_content=most_commented', $temp);
 					} else {
 						$temp = '';
 					}
