@@ -34,7 +34,7 @@
 <script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
 <![endif]-->
 <?php wp_head(); ?>
-<link rel='stylesheet' id='sharedaddy-css'  href='http://broadsheet.karlmonaghan.com/wp-content/plugins/jetpack/modules/sharedaddy/sharing.css?ver=2.3' type='text/css' media='all' />
+<link rel='stylesheet' id='sharedaddy-css'  href='http://broadsheet.ie/wp-content/plugins/jetpack/modules/sharedaddy/sharing.css?ver=2.3' type='text/css' media='all' />
 <script type='text/javascript'>
   function recordOutboundLink(link, category, action) {
     _gat._getTrackerByName()._trackEvent(category, action);
@@ -67,7 +67,7 @@ googletag.cmd.push(function() {
         googletag.defineSlot('/20132202/Broadsheet_Mobile_Leaderboard', [320, 50], 'div-gpt-ad-1373919137130-0').addService(googletag.pubads());
     }
 googletag.defineSlot('/20132202/BroadsheetMPU', [300, 250], 'div-gpt-ad-1348854553033-1').addService(googletag.pubads());
-googletag.defineSlot('/20132202/BroadsheetMPU2', [300, 250], 'div-gpt-ad-1348854553033-2').addService(googletag.pubads());
+googletag.defineSlot('/20132202/BroadsheetMPU2', [300, 250], 'div-gpt-ad-1392892360823-0').addService(googletag.pubads());
 googletag.pubads().enableSingleRequest();
 googletag.pubads().collapseEmptyDivs();
 googletag.enableServices();
@@ -99,7 +99,7 @@ googletag.enableServices();
 			</div>
         </center>
         <center>
-            <a href="/"><img class="hide-small" src="/logo/header_logo.png" alt="Broadsheet.ie" width="624" height="127" /><img class="show-large" src="/images/Chompsky_163x127.png" alt="Broadsheet.ie" width="163" height="127" /></a>
+            <a href="/"><img class="hide-small" src="/logo/header_logo.png?v=<?php echo time(); ?>" alt="Broadsheet.ie" width="624" height="127" /><img class="show-large" src="/images/Chompsky_163x127.png" alt="Broadsheet.ie" width="163" height="127" /></a>
         </center>
         <div class="header-bar">
         	<div class="strapline alignleft">
