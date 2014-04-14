@@ -64,7 +64,7 @@ googletag.cmd.push(function() {
         googletag.defineSlot('/20132202/Broadsheet_Filmstrip', [300, 600], 'div-gpt-ad-1373919543635-0').addService(googletag.pubads());
         googletag.defineSlot('/20132202/BroadsheetTakeover', [1, 1], 'div-gpt-ad-1349021718141-3').addService(googletag.pubads());
     } else {
-        googletag.defineSlot('/20132202/Broadsheet_Mobile_Leaderboard', [320, 50], 'div-gpt-ad-1373919137130-0').addService(googletag.pubads());
+googletag.defineSlot('/20132202/Broadsheet_Mini_Leaderboard', [320, 50], 'div-gpt-ad-1397509779716-0').addService(googletag.pubads());
     }
 googletag.defineSlot('/20132202/BroadsheetMPU', [300, 250], 'div-gpt-ad-1348854553033-1').addService(googletag.pubads());
 googletag.defineSlot('/20132202/BroadsheetMPU2', [300, 250], 'div-gpt-ad-1392892360823-0').addService(googletag.pubads());
@@ -76,6 +76,14 @@ googletag.enableServices();
 </head>
 
 <body <?php body_class(); ?> id="body_id">
+<center>
+<!-- Broadsheet_Mini_Leaderboard -->
+<div id='div-gpt-ad-1397509779716-0' style='width:320px; height:50px; display:none'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1397509779716-0'); });
+</script>
+</div>
+</center>
 <div id="page" class="hfeed site">
 	<header id="masthead" class="site-header" role="banner">
         <center>
@@ -89,12 +97,6 @@ googletag.enableServices();
 			<div id='div-gpt-ad-1376770461445-0' style='width:970px; display:none'>
 			<script type='text/javascript'>
 			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1376770461445-0'); });
-			</script>
-			</div>
-			<!-- Broadsheet_Mobile_Leaderboard -->
-			<div id='div-gpt-ad-1373919137130-0' style='width:320px; height:50px;display:none'>
-			<script type='text/javascript'>
-			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1373919137130-0'); });
 			</script>
 			</div>
         </center>
