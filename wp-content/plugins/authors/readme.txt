@@ -3,7 +3,7 @@ Contributors: flocsy
 Donate link: http://blog.fleischer.hu/wordpress/authors/
 Tags: authors, author, multi-author, multi-user, list, sidemenu, sidebar, links, widgets, widget, plugin, avatar, gravatar
 Requires at least: 2.0.2
-Tested up to: 3.8
+Tested up to: 3.8.1
 Stable tag: trunk
 
 Authors Widget shows the list or cloud of the authors in the sidemenu.
@@ -56,6 +56,7 @@ And you're welcome to [donate](http://blog.fleischer.hu/wordpress/authors/) to k
 * Polish / Polski [Krzysztof](http://pl2wp.prywatny.eu/)
 * Serbian / srpski by [Borisa Djuraskovic]
 * Italian / italiano by [Aurezio](http://www.sognoesondesto.it)
+* Ukrainian / українська by [Michael Yunat](http://getvoip.com/)
 
 = How can I exclude certain authors from being displayed? =
 
@@ -84,6 +85,12 @@ Fill only one of the fields: either Include or Exclude, but not both of them.
 == Upgrade Notice ==
 
 == Changelog ==
+
+= 2.4.3 =
+* Added Ukrainian translation
+
+= 2.4.2 =
+* Fixed exclude bug
 
 = 2.4.1 =
 * Added Ball format (needs SEO-tag-cloud widget)

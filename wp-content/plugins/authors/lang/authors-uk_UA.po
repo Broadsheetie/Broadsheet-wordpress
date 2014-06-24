@@ -1,0 +1,141 @@
+# Copyright (C) 2013 Authors Widget
+# This file is distributed under the same license as the Authors Widget package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Authors Widget 2.4.1\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/authors\n"
+"POT-Creation-Date: 2013-12-10 23:41:05+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2013-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+#: authors.php:159
+msgid "Select Author..."
+msgstr "Виберіть Автора ..."
+
+#: authors.php:248
+msgid "Posts by %s"
+msgstr "Повідомлення від %s"
+
+#: authors.php:308 authors.php:562
+msgid "Authors"
+msgstr "Автори"
+
+#: authors.php:347
+msgid "Powered by %s"
+msgstr "Створено %s"
+
+#: authors.php:347
+msgid "Authors Widget Plugin for Wordpress"
+msgstr "Автори Віджет плагін для Wordpress"
+
+#: authors.php:347
+msgid "Authors Widget"
+msgstr "Автори Віджет"
+
+#: authors.php:449
+msgid "Title"
+msgstr "Назва"
+
+#: authors.php:451
+msgid "Format"
+msgstr "Формат"
+
+#: authors.php:452
+msgid "List"
+msgstr "Список"
+
+#: authors.php:454
+msgid "Cloud"
+msgstr "Хмара"
+
+#: authors.php:455
+msgid "Ball"
+msgstr "М&#39;яч"
+
+#: authors.php:457
+msgid "Dropdown"
+msgstr "Випадне"
+
+#: authors.php:460
+msgid "Order by"
+msgstr "Сортувати по"
+
+#: authors.php:461
+msgid "Display name"
+msgstr "Зміни імен"
+
+#: authors.php:462
+msgid "First name"
+msgstr "Ім&#39;я"
+
+#: authors.php:463
+msgid "Last name"
+msgstr "Прізвище"
+
+#: authors.php:464
+msgid "Post count"
+msgstr "Число повідомлень"
+
+#: authors.php:465
+msgid "ID"
+msgstr "ID"
+
+#: authors.php:467
+msgid "Number of authors to show"
+msgstr "Кількість авторів для показу"
+
+#: authors.php:468
+msgid "Show full name"
+msgstr "Показати повний"
+
+#: authors.php:469
+msgid "Show avatar"
+msgstr "Показати аватар"
+
+#: authors.php:470
+msgid "Avatar size"
+msgstr "Розмір Аватар"
+
+#: authors.php:471
+msgid "Show RSS links"
+msgstr "Показати RSS посилання"
+
+#: authors.php:472
+msgid "Show post counts"
+msgstr "Показати кількість постів"
+
+#: authors.php:473
+msgid "Hide empty"
+msgstr "Приховати порожній"
+
+#: authors.php:474
+msgid "Exclude admin"
+msgstr "Виключити адміністратора"
+
+#: authors.php:475
+msgid "Exclude"
+msgstr "Виключати"
+
+#: authors.php:476
+msgid "Include"
+msgstr "Включати"
+
+#: authors.php:478
+msgid "How satisfied you are with the plugin?"
+msgstr "Ви задоволені плагіном?"
+
+#: authors.php:480
+msgid "Donate"
+msgstr "Жертвувати"
+
+#: authors.php:481
+msgid "Show credit"
+msgstr "Показати кредит"
+
+#: authors.php:560
+msgid "A list of the authors"
+msgstr "Список авторів"
+

@@ -3,7 +3,7 @@
 Plugin Name: Authors Widget
 Plugin URI: http://blog.fleischer.hu/wordpress/authors/
 Description: Authors Widget shows the list or cloud of the authors, with the number of posts, link to RSS feed next to their name, avatar. It is useful in a multi-author blog, where you want to have the list in the sidemenu.
-Version: 2.4.1
+Version: 2.4.3
 Author: Gavriel Fleischer
 Author URI: http://blog.fleischer.hu/author/gavriel/
 */
@@ -515,7 +515,7 @@ function widget_authors_list_authors($args = '') {
 		if ( !empty( $include ) ) {
 			$include = explode( ',', $include);
 			foreach ( $include as $key => $val ) {
-				if ( !is_numeric( $val ) ) {
+				if ( !is_int( $val ) ) {
 					$user = get_user_by( 'login', $val );
 					$include[$key] = $user->ID;
 				}
@@ -524,7 +524,8 @@ function widget_authors_list_authors($args = '') {
 		if ( !empty( $exclude ) ) {
 			$exclude = explode( ',', $exclude);
 			foreach ( $exclude as $key => $val ) {
-				if ( !is_numeric( $val ) ) {
+				if ( !is_int( $val ) ) {
+					$val = trim($val, '"\'');
 					$user = get_user_by( 'login', $val );
 					$exclude[$key] = $user->ID;
 				}
@@ -532,7 +533,7 @@ function widget_authors_list_authors($args = '') {
 		}
 		$user_args = array(
 			'fields' => array( 'ID', 'user_nicename', 'display_name' ),
-			'who' => 'authors',
+			'who' => 'all',
 			'orderby' => 'display_name',
 			'include' => $include,
 			'exclude' => $exclude
