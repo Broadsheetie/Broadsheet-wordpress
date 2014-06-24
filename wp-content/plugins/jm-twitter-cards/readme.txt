@@ -2,6 +2,7 @@
 Contributors: jmlapam
 Tags: twitter, cards, semantic markup, metabox, meta, photo, product, gallery, player
 Donate Link: http://www.amazon.fr/registry/wishlist/1J90JNIHBBXL8
+Requires at least: 3.6
 Tested up to: 3.9.1
 License: GPLv2 or later
 Stable tag: trunk
@@ -14,6 +15,7 @@ Easy integration of Twitter cards in WordPress. All card types provided.
 Once activated the plugin adds appropriate meta on your WordPress website allowing you to get Twitter cards for your posts according to your settings. Enjoy !
 
 Compatible with : WP SEO by Yoast and All in One SEO.
+Support Open Graph (deactivated by default).
 
 The plugin allows you to customize your cards per each post. If you use SEO by Yoast plugin do not activate the Twitter card's option. Otherwise markup will be added twice.
 If you choose full customization you will see a metabox in your post edit.
@@ -23,8 +25,10 @@ If you choose full customization you will see a metabox in your post edit.
 Plugin available in Spanish thanks to Andrew de <a href="http://www.webhostinghub.com/">WebHostingHub</a>  (thanks dude ^^) 
 
 I've been rebuilding the plugin for better features and user interface. This is available here : https://github.com/TweetPressFr/jm-twitter-cards
-
 This URL is the place where I improve the plugin according to support requests and stuffs like this. Github is the place !
+
+
+**The plugin now includes a visual preview if you use the meta box option. On no account this could replace the Twitter's validator but it rocks.**
 
 
 <a href="http://twitter.com/intent/user?screen_name=tweetpressfr">Follow me on Twitter</a>
@@ -37,11 +41,14 @@ En Français
 Une fois activé le plugin s'occupe d'ajouter les métas nécessaires vous permettant d'obtenir des cards Twitter sur vos posts selon vos réglages. Profitez-en bien !
 
 Compatible avec WP SEO by Yoast et All in One SEO.
+Support pour l'Open Graph (désactivé par défaut).
 
 Le plugin vous permet de personnaliser les cards pour chaque post. Attention malgré tout à ne pas activer l'option card de Yoast ou sinon le markup sera ajouté 2 fois.
 En mode full custom une metabox apparaît dans vos edit de post.
 
 Appel aux traducteurs pour d'autres langages : contact@tweetpress.fr
+
+**Le plugin intègre maintenant une prévisualisation de la card. Cela ne remplacera pas le validateur de Twitter mais c'est cool !**
 
 <a href="http://twitter.com/intent/user?screen_name=tweetpressfr">Me suivre sur Twitter</a>
 
@@ -142,6 +149,7 @@ Vous devez utiliser le shortcode [gallery] pour obtenir une card galerie (c'est 
 3. meta box
 4. player cards validator ( I did not apply for player cards cause I do not have SSL )
 5. gallery cards validator
+6. preview in meta box
 
 
 == Other notes ==
@@ -180,7 +188,44 @@ function _jm_tc_relative_paths($content) {
 **BE CAREFUL WITH THIS! DO NOT USE IF YOU DO NOT KNOW WHAT YOU ARE DOING, YOU CAN BREAK YOUR CARDS WITH THIS !!!**
 
 
+= There are a lot of new filters since 5.2 =
+
+Meant to help developers only. You'll have to code to use them.
+
 == Changelog ==
+
+= 5.2.7 =
+* 22 June 2014
+* Small fix: HTML meta name og does not exists ! Now the plugin uses meta property
+
+= 5.2.6 =
+* 14 June 2014
+* add option to import/export options quickly, this will let you quickly export/import settings in JSON format
+* could save a lot of time especially in multisite mod
+* I decided to add this feature instead of adding some network-wide options that could be tricky
+* Fix missing translation for yes/no options
+* Fix some bug in preview
+* Remove loop through network in uninstall because it doesn't scale actually 
+
+= 5.2.5 =
+* 7 June 2014
+* Fix preview with undefined index (new option open graph)
+* Add debug method in utilities
+
+= 5.2.4 =
+* 6 June 2014
+* Suppport for Open Graph
+* Improve multisite compatibility (default options, uninstall)
+* Fix some mistakes in spanish
+* Fix notices regarding default options when activating
+
+= 5.2.3 =
+* 19 May 2014
+* Fix issue when shortcode is at the top of posts thanks to <a href="https://github.com/jrthib">jrthib</a>
+* No more backward compatibility before WP 3.6, plugin won't break but gallery card won't work for these old old versions of WP
+* Rebuild preview because of the bug with overflow and replace it with a visual preview
+* Be careful this is just a hint, this shows how your card could look not the real result with validator
+* To do : add the js to metabox and improve multisite compatibility
 
 = 5.2.2 =
 * 11 May 2014

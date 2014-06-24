@@ -5,10 +5,10 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 	exit();
 }
 
-if ( ! class_exists( 'JM_TC_Metabox' ) ) {
-	class JM_TC_Metabox{
+if ( class_exists( 'JM_TC_Utilities' ) ) {
 
-		
+	class JM_TC_Metabox extends JM_TC_Utilities{
+
 		var $opts;
 		
 		function __construct() {
@@ -17,20 +17,20 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			
 			
 			//render
-			add_action( 'cmb_render_text_number', array(&$this, 'render_text_number'), 10, 2 );
-			add_action( 'cmb_render_text_url_https', array(&$this, 'render_text_url_https'), 10, 2 );
+			add_action( 'cmb_render_text_number', array($this, 'render_text_number'), 10, 2 );
+			add_action( 'cmb_render_text_url_https', array($this, 'render_text_url_https'), 10, 2 );
 			
 			//alter desc and preview attributes
 			add_filter( 'cmb_title_attributes', array($this,'cmb_update_title_description'), 10, 2 );
 			
 			//register meta box
-			add_action( 'cmb_meta_boxes', array(&$this, 'register_meta_boxes' ), 10, 1 );
+			add_action( 'cmb_meta_boxes', array($this, 'register_meta_boxes' ), 10, 1 );
 			
 			//show on/off field in post
-			add_filter( 'cmb_show_on', array(&$this, 'exclude_from_post'), 10, 2 );
+			add_filter( 'cmb_show_on', array($this, 'exclude_from_post'), 10, 2 );
 			
 			//show on/off field in profile
-			add_filter( 'cmb_show_on', array(&$this, 'exclude_from_profile'), 10, 2 );
+			add_filter( 'cmb_show_on', array($this, 'exclude_from_profile'), 10, 2 );
 		}
 
 		// Add number field
@@ -47,30 +47,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 		function render_title_custom( $field, $meta ) {
 			echo '<input type="url" name="', $field['id'], '" id="', $field['id'], '" value="', $meta, '" style="width:97%" />','<p class="cmb_metabox_description">', $field['desc'], '</p>';
 		}
-		
-		// Force code display
-		public static function code() {
-          static $on = false;
-          if ( !$on ) {
-               ob_start();
-          } else {
-               $buffer = ob_get_contents();
-               ob_end_clean();
-               highlight_string( $buffer );
-          }
-          $on = !$on;
-		}
-		
-		// get markup and return preview
-		public static function markup_as_preview(){
-		
-			self::code();
-			$markup  = new JM_TC_Markup;
-			$preview = $markup->add_markup();
-			self::code();
-			
-			return $preview;
-		}
+
 		
 		//cmb snippet props to jtsternberg 
 		function cmb_update_title_description( $args, $field ) {
@@ -79,7 +56,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 				$args['desc'] = JM_TC_Thumbs::get_post_thumbnail_weight( $field->object_id );
 				
 			if( $field->id() == 'preview_title' ) 
-				$args['desc'] = self::markup_as_preview();
+				$args['desc'] = JM_TC_Preview::show_preview($field->object_id);
 		
 			return $args;
 		}
@@ -346,7 +323,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			
 			array(
 			'id'       => 'cardPlayerStream',
-			'name'     => __('URL of iFrame player (MUST BE HTTPS)', 'jm-tc'),
+			'name'     => __('URL of iFrame player (MUST BE HTTPS)', 'jm-tc') . '[STREAM]',
 			'type'     => 'text_url_https',
 			'desc'     => __('If you do not understand what is the following field then it is probably a bad idea to fulfill it!', 'jm-tc'),
 

@@ -2,7 +2,11 @@
 
 // If cheating exit
 if( !defined( 'ABSPATH') && !defined('WP_UNINSTALL_PLUGIN') )
-exit();
+	exit();
+
+	
+delete_option( 'jm_tc'); 
+
 
 /**
  * Delete postmeta from option table
@@ -37,3 +41,10 @@ global $wpdb;
 			)
 	);
 }
+/*
+// multisite part 
+if ( is_multisite() ) {
+
+	delete_site_option( 'jm_tc_network');
+
+}*/
