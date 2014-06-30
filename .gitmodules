@@ -1,0 +1,3 @@
+[submodule "wp-content/plugins/wp-json-api"]
+	path = wp-content/plugins/wp-json-api
+	url = https://github.com/Broadsheetie/wp-json-api.git
