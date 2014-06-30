@@ -42,6 +42,15 @@ function imagealphamask(&$picture, $mask) {
 
     copy ('../logo/header_logo.png', '../logo/' . date('YmdHis') . '.png');
 	imagepng($picture,'../logo/header_logo.png');
+	
+	$thumb = imagecreatetruecolor(393, 80);
+	imagesavealpha($thumb, true);
+	
+    $trans_colour = imagecolorallocatealpha($thumb, 0, 0, 0, 127);
+    imagefill($thumb, 0, 0, $trans_colour);
+    
+	imagecopyresized($thumb, $picture, 0, 0, 0, 0, 393, 80, 624, 127);
+	imagepng($thumb,'../logo/iphone_logo.png');
 }
 
 if (count($_POST))
