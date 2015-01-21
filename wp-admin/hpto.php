@@ -86,7 +86,7 @@ function showSkinScript() {
 		skinText += "bodyElement.style.backgroundPosition = \"center top\";\n";
 		skinText += "bodyElement.style.backgroundColor = \"" + $('#skin-background').val() + "\";\n";
 		skinText += "bodyElement.style.cursor = \"pointer\";\n";
-		skinText += "bodyElement.style.paddingTop = \"" + $('#skin-header-height').val() + "\";\n";
+		skinText += "bodyElement.style.paddingTop = \"" + $('#skin-header-height').val() + "px\";\n";
 		skinText += "bodyElement.style.paddingLeft = \"0px\";\n";
 		skinText += "bodyElement.style.paddingRight = \"0px\";\n";
 		skinText += "window.parent.document.getElementById('page').style. cursor = \"auto\";\n";
