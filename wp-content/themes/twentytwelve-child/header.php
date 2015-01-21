@@ -59,14 +59,14 @@ googletag.cmd.push(function() {
     pageWidth  = headerDiv.offsetWidth;
 
     if (pageWidth >= 728) {
-        googletag.defineSlot('/20132202/BroadsheetLeaderboard', [728, 90], 'div-gpt-ad-1348854553033-0').addService(googletag.pubads());
-		googletag.defineSlot('/20132202/BroadsheetBillboard', [970, 250], 'div-gpt-ad-1376770461445-0').addService(googletag.pubads());
-        googletag.defineSlot('/20132202/Broadsheet_Filmstrip', [300, 600], 'div-gpt-ad-1373919543635-0').addService(googletag.pubads());
+        googletag.defineSlot('/20132202/BS-1-HP-Flex-Billboard', [[728, 90], [970, 90], [970, 250]], 'div-gpt-ad-1421876448062-0').addService(googletag.pubads());
         googletag.defineSlot('/20132202/BroadsheetTakeover', [1, 1], 'div-gpt-ad-1349021718141-3').addService(googletag.pubads());
+	googletag.defineSlot('/20132202/BS-2-Flex-MPU-1', [[300, 250], [300, 600]], 'div-gpt-ad-1421877611259-0').addService(googletag.pubads());
     } else {
-googletag.defineSlot('/20132202/Broadsheet_Mini_Leaderboard', [320, 50], 'div-gpt-ad-1397509779716-0').addService(googletag.pubads());
+	googletag.defineSlot('/20132202/BroadsheetMPU', [300, 250], 'div-gpt-ad-1348854553033-1').addService(googletag.pubads());
+	googletag.defineSlot('/20132202/Broadsheet_Mini_Leaderboard', [320, 50], 'div-gpt-ad-1397509779716-0').addService(googletag.pubads());
     }
-googletag.defineSlot('/20132202/BroadsheetMPU', [300, 250], 'div-gpt-ad-1348854553033-1').addService(googletag.pubads());
+
 googletag.defineSlot('/20132202/BroadsheetMPU2', [300, 250], 'div-gpt-ad-1392892360823-0').addService(googletag.pubads());
 googletag.pubads().enableSingleRequest();
 googletag.pubads().collapseEmptyDivs();
@@ -87,19 +87,13 @@ googletag.cmd.push(function() { googletag.display('div-gpt-ad-1397509779716-0');
 <div id="page" class="hfeed site">
 	<header id="masthead" class="site-header" role="banner">
         <center>
-			<!-- BroadsheetLeaderboard -->
-			<div id='div-gpt-ad-1348854553033-0' style='width:728px; height:90px;display:none'>
-			<script type='text/javascript'>
-			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1348854553033-0'); });
-			</script>
-			</div>
-			<!-- BroadsheetBillboard -->
-			<div id='div-gpt-ad-1376770461445-0' style='width:970px; display:none'>
-			<script type='text/javascript'>
-			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1376770461445-0'); });
-			</script>
-			</div>
-        </center>
+        	<!-- BS-1-HP-Flex-Billboard -->
+		<div id='div-gpt-ad-1421876448062-0'>
+		<script type='text/javascript'>
+		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1421876448062-0'); });
+		</script>
+		</div>
+	</center>
         <center>
             <a href="/"><img class="hide-small" src="/logo/header_logo.png?v=<?php echo time(); ?>" alt="Broadsheet.ie" width="624" height="127" /><img class="show-large" src="/images/Chompsky_163x127.png" alt="Broadsheet.ie" width="163" height="127" /></a>
         </center>
