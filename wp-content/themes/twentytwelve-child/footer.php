@@ -31,6 +31,7 @@
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
   ga('create', 'UA-5653857-3', 'broadsheet.ie');
+  ga('require', 'displayfeatures');
   ga('send', 'pageview');
 
    (function() {
