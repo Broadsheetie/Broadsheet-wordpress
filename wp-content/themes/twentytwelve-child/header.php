@@ -21,11 +21,8 @@
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="width=device-width" />
-<meta name="apple-itunes-app" content="app-id=413093424  " />
-<meta name="google-play-app" content="app-id=ie.broadsheet.app">
 <link rel="apple-touch-icon" href="/images/icon.png" />
 <link rel="apple-touch-icon" sizes="114x114" href="/images/icon@2x.png" />
-<link rel="stylesheet" href="/css/jquery.smartbanner.css" type="text/css" media="screen">
 <title><?php wp_title( '|', true, 'right' ); ?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
