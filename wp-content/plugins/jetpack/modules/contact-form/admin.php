@@ -318,7 +318,16 @@ function grunion_manage_post_columns( $col, $post_id ) {
 			echo '<strong>';
 			echo esc_html( $content_fields['_feedback_subject'] );
 			echo '</strong><br />';
-			echo sanitize_text_field( get_the_content( '' ) );
+			//echo sanitize_text_field( get_the_content( '' ) );
+			$text =  sanitize_text_field( get_the_content( '' ) );
+
+			$reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
+
+			if(preg_match($reg_exUrl, $text, $url)) {
+				echo preg_replace($reg_exUrl, "<a href='{$url[0]}'>{$url[0]}</a> ", $text);
+			} else {
+				echo $text;
+			}
 			echo '<br />';
 
 			$extra_fields = get_post_meta( $post_id, '_feedback_extra_fields', TRUE );
