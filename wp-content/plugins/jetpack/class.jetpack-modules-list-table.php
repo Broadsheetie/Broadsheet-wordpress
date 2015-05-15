@@ -17,19 +17,19 @@ class Jetpack_Modules_List_Table extends WP_List_Table {
 
 		wp_register_script(
 			'models.jetpack-modules',
-			plugins_url( '_inc/jetpack-modules.models.js', __FILE__ ),
+			plugins_url( '_inc/jetpack-modules.models.js', JETPACK__PLUGIN_FILE ),
 			array( 'backbone', 'underscore' ),
 			JETPACK__VERSION
 		);
 		wp_register_script(
 			'views.jetpack-modules',
-			plugins_url( '_inc/jetpack-modules.views.js', __FILE__ ),
+			plugins_url( '_inc/jetpack-modules.views.js', JETPACK__PLUGIN_FILE ),
 			array( 'backbone', 'underscore', 'wp-util' ),
 			JETPACK__VERSION
 		);
 		wp_register_script(
 			'jetpack-modules-list-table',
-			plugins_url( '_inc/jetpack-modules.js', __FILE__ ),
+			plugins_url( '_inc/jetpack-modules.js', JETPACK__PLUGIN_FILE ),
 			array(
 				'views.jetpack-modules',
 				'models.jetpack-modules',
@@ -66,17 +66,17 @@ class Jetpack_Modules_List_Table extends WP_List_Table {
 						<input type="checkbox" name="modules[]" value="{{{ item.module }}}" />
 					</th>
 					<td class='name column-name'>
+						<span class='info'><a href="#">{{{ item.name }}}</a></span>
 						<div class="row-actions">
 						<# if ( item.configurable ) { #>
 							<span class='configure'>{{{ item.configurable }}}</span>
 						<# } #>
-						<# if ( item.activated ) { #>
+						<# if ( item.activated && 'vaultpress' !== item.module ) { #>
 							<span class='delete'><a href="<?php echo admin_url( 'admin.php' ); ?>?page=jetpack&#038;action=deactivate&#038;module={{{ item.module }}}&#038;_wpnonce={{{ item.deactivate_nonce }}}"><?php _e( 'Deactivate', 'jetpack' ); ?></a></span>
 						<# } else if ( item.available ) { #>
 							<span class='activate'><a href="<?php echo admin_url( 'admin.php' ); ?>?page=jetpack&#038;action=activate&#038;module={{{ item.module }}}&#038;_wpnonce={{{ item.activate_nonce }}}"><?php _e( 'Activate', 'jetpack' ); ?></a></span>
 						<# } #>
 						</div>
-						<span class='info'><a href="#">{{{ item.name }}}</a></span>
 					</td>
 				</tr>
 				<#
@@ -287,4 +287,19 @@ class Jetpack_Modules_List_Table extends WP_List_Table {
 				return print_r( $item, true );
 		}
 	}
+
+	/**
+	 * Core switched their `display_tablenav()` method to protected, so we can't access it directly.
+	 * Instead, let's include an access function to make it doable without errors!
+	 *
+	 * @see https://github.com/WordPress/WordPress/commit/d28f6344de97616de8ece543ed290c4ba2383622
+	 *
+	 * @param string $which
+	 *
+	 * @return mixed
+	 */
+	function unprotected_display_tablenav( $which = 'top' ) {
+		return $this->display_tablenav( $which );
+	}
+
 }

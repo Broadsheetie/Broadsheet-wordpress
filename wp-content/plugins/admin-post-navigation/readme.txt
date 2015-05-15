@@ -5,8 +5,8 @@ Tags: admin, navigation, post, next, previous, edit, post types, coffee2code
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 3.0
-Tested up to: 3.8
-Stable tag: 1.8
+Tested up to: 4.1
+Stable tag: 1.9
 
 Adds links to navigate to the next and previous posts when editing a post in the WordPress admin.
 
@@ -19,7 +19,7 @@ By default, a previous/next post is determined by the next lower/higher valid po
 
 NOTE: Be sure to save the post currently being edited before navigating away to the previous/next post.
 
-Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/admin-post-navigation/) | [Plugin Directory Page](http://wordpress.org/plugins/admin-post-navigation/) | [Author Homepage](http://coffee2code.com)
+Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/admin-post-navigation/) | [Plugin Directory Page](https://wordpress.org/plugins/admin-post-navigation/) | [Author Homepage](http://coffee2code.com)
 
 
 == Installation ==
@@ -41,10 +41,14 @@ Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/admin-post-navigation
 
 See the Filters section for the `c2c_admin_post_navigation_orderby` filter, which has just such an example.
 
+= Can I change the link text to something other than "&larr; Previous" and/or "Next &rarr;"? =
+
+Yes. See the Filters section for the `c2c_admin_post_navigation_prev_text` and/or `c2c_admin_post_navigation_next_text` filters, which have just such examples. To change or amend the overall markup for the links, look into the `c2c_admin_post_navigation_display` filter.
+
 
 == Filters ==
 
-The plugin is further customizable via four filters. Typically, these customizations would be put into your active theme's functions.php file, or used by another plugin.
+The plugin is further customizable via six filters. Typically, these customizations would be put into your active theme's functions.php file, or used by another plugin.
 
 = c2c_admin_post_navigation_orderby (filter) =
 
@@ -56,10 +60,18 @@ Arguments:
 
 Example:
 
-`add_filter( 'c2c_admin_post_navigation_orderby', 'order_apn_by_post_date' );
+`
+/**
+ * Modify how Admin Post Navigation orders posts for navigation.
+ *
+ * @param string $field The field used to order posts for navigation.
+ * @return string
+ */
 function order_apn_by_post_date( $field ) {
 	return 'post_date';
-}`
+}
+add_filter( 'c2c_admin_post_navigation_orderby', 'order_apn_by_post_date' );
+`
 
 = c2c_admin_post_navigation_post_statuses (filter) =
 
@@ -72,12 +84,24 @@ Arguments:
 Example:
 
 `
-add_filter( 'c2c_admin_post_navigation_post_statuses', 'change_apn_post_status' );
+/**
+ * Modify Admin Post Navigation to allow and disallow certain post statuses from being navigated.
+ *
+ * @param array $post_statuses Post statuses permitted for admin navigation.
+ * @return array
+ */
 function change_apn_post_status( $post_statuses ) {
-	$post_statuses[] = 'trash'; // Adding a post status
-	if ( isset( $post_statuses['future'] ) ) unset( $post_statuses['future'] ); // Removing a post status
+	// Adding a post status.
+	$post_statuses[] = 'trash';
+
+	// Removing a post status.
+	if ( isset( $post_statuses['future'] ) ) {
+		unset( $post_statuses['future'] );
+	}
+
 	return $post_statuses;
 }
+add_filter( 'c2c_admin_post_navigation_post_statuses', 'change_apn_post_status' );
 `
 
 = c2c_admin_post_navigation_post_types (filter) =
@@ -91,21 +115,78 @@ Arguments:
 Examples:
 
 `
-// Modify Admin Post Navigation to only allow navigating strictly for posts.
-add_filter( 'c2c_admin_post_navigation_post_types', 'change_apn_post_types' );
+/**
+ * Modify Admin Post Navigation to only allow navigating strictly for posts.
+ *
+ * @param array $post_types Post types that should have admin post navigation.
+ * @return array
+ */
 function change_apn_post_types( $post_types ) {
 	return array( 'post' );
 }
+add_filter( 'c2c_admin_post_navigation_post_types', 'change_apn_post_types' );
 `
 
 `
-// Modify Admin Post Navigation to disallow navigation for the 'recipe' post type
-add_filter( 'c2c_admin_post_navigation_post_types', 'remove_recipe_apn_post_types' );
+/**
+ * Modify Admin Post Navigation to disallow navigation for the 'recipe' post type.
+ *
+ * @param array $post_types Post types that should have admin post navigation.
+ * @return array
+ */
 function remove_recipe_apn_post_types( $post_types ) {
-	if ( isset( $post_types['recipe'] ) )
+	if ( isset( $post_types['recipe'] ) ) {
 		unset( $post_types['recipe'] ); // Removing a post type
+	}
 	return $post_types;
 }
+add_filter( 'c2c_admin_post_navigation_post_types', 'remove_recipe_apn_post_types' );
+`
+
+= c2c_admin_post_navigation_prev_text (filter) =
+
+The 'c2c_admin_post_navigation_prev_text' filter allows you to change the link text used for the 'Previous' link. By default this is '&larr; Previous'.
+
+Arguments:
+
+* $text (string) The 'previous' link text.
+
+Example:
+
+`
+/**
+ * Changes the text for the 'previous' link to 'Older' output by the Admin Post Navigation plugin.
+ *
+ * @param string $text The text used to indicate the 'next' post.
+ * @return string
+ */
+function my_c2c_admin_post_navigation_prev_text( $text ) {
+	return 'Older';
+}
+add_filter( 'c2c_admin_post_navigation_prev_text', 'my_c2c_admin_post_navigation_prev_text' );
+`
+
+= c2c_admin_post_navigation_next_text (filter) =
+
+The 'c2c_admin_post_navigation_next_text' filter allows you to change the link text used for the 'Next' link. By default this is 'Next &rarr;'.
+
+Arguments:
+
+* $text (string) The 'next' link text.
+
+Example:
+
+`
+/**
+ * Changes the text for the 'next' link to 'Newer' output by the Admin Post Navigation plugin.
+ *
+ * @param string $text The text used to indicate the 'next' post.
+ * @return string
+ */
+function my_c2c_admin_post_navigation_next_text( $text ) {
+	return 'Newer';
+}
+add_filter( 'c2c_admin_post_navigation_next_text', 'my_c2c_admin_post_navigation_next_text' );
 `
 
 = c2c_admin_post_navigation_display (filter) =
@@ -119,15 +200,40 @@ Arguments:
 Example:
 
 `
-add_filter( 'c2c_admin_post_navigation_display', 'override_apn_display' );
+/**
+ * Change the markup displayed by the Admin Post Navigation plugin.
+ *
+ * @param string $text The text being output by the plugin.
+ * @return string
+ */
 function override_apn_display( $text ) {
 	// Simplistic example. You could preferably make the text bold using CSS.
 	return '<strong>' . $text . '</strong>';
 }
+add_filter( 'c2c_admin_post_navigation_display', 'override_apn_display' );
 `
 
 
 == Changelog ==
+
+= 1.9 (2015-03-14) =
+* Fix to only append navigation to the first h2 on the page. props @pomegranate
+* Add filter 'c2c_admin_post_navigation_prev_text' to allow customization of the previous navigation link text. props @pomegranate
+* Add filter 'c2c_admin_post_navigation_next_text' to allow customization of the next navigation link text. props @pomegranate
+* Restrict orderby value to be an actual posts table field
+* Add unit tests
+* Prevent querying for a post if there isn't a global post_ID set or if no valid post_statuses were set
+* Cast result of 'c2c_admin_post_navigation_post_statuses' filter to an array to avoid potential PHP warnings with improper use
+* Improved sanitization of values returned via the 'c2c_admin_post_navigation_post_statuses' filter
+* Add docs for new filters
+* Documentation improvements
+* Reformat plugin header
+* Note compatibility through WP 4.1+
+* Update copyright date (2015)
+* Minor code reformatting (bracing, spacing)
+* Change documentation links to wp.org to be https
+* Add plugin icon
+* Regenerate .pot
 
 = 1.8 (2013-12-29) =
 * Hide screen option checkbox for metabox if JS hides metabox for inline use
@@ -238,6 +344,9 @@ function override_apn_display( $text ) {
 
 
 == Upgrade Notice ==
+
+= 1.9 =
+Feature update: fix to only apply navigation to first h2 on page; added filters to facilitate customizing link text; added unit tests; noted compatibility through WP 4.1+; added plugin icon
 
 = 1.8 =
 Minor update: hid screen options checkbox when JS is enabled since metabox is hidden; improved metabox spacing; noted compatibility through WP 3.8+

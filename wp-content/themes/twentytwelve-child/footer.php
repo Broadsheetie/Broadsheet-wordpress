@@ -20,7 +20,10 @@
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->
-
+<!-- Broadsheet broadsheet.ie inpagevideo-->
+<div id="inPageVideo"></div>
+<script  type="text/javascript" async src="//uk.vmg.host/adServ/placement/id/723"></script>
+<!-- end  -->
 <?php wp_footer(); ?>
 
 <script type="text/javascript">
@@ -48,12 +51,13 @@
 
 <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 <div id="fb-root"></div>
-<script src="http://connect.facebook.net/en_US/all.js"></script>
-<script>
-  FB.init({
-          xfbml  : true  // parse XFBML
-                });
-</script>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.3&appId=431957626842670";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 <script src="http://w.newswhip.com/ireland/all?style=broadsheet&count=5" type="text/javascript"></script>
 <!-- BroadsheetTakeover -->
@@ -61,5 +65,11 @@
 <script type='text/javascript'>
 googletag.cmd.push(function() { googletag.display('div-gpt-ad-1349021718141-3'); });
 </script>
+<script src="/js/jquery.smartbanner.js"></script>
+    <script type="text/javascript">
+      (function($) { 
+      	$.smartbanner() 
+      })(jQuery);
+    </script>
 </body>
 </html>

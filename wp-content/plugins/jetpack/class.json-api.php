@@ -23,6 +23,8 @@ class WPCOM_JSON_API {
 	var $exit = true;
 	var $public_api_scheme = 'https';
 
+	var $output_status_code = 200;
+
 	var $trapped_error = null;
 	var $did_output = false;
 
@@ -106,7 +108,7 @@ class WPCOM_JSON_API {
 				}
 			} else {
 				$this->post_body = $post_body;
-				$this->content_type = '{' === $this->post_body[0] ? 'application/json' : 'application/x-www-form-urlencoded';
+				$this->content_type = '{' === isset( $this->post_body[0] ) && $this->post_body[0] ? 'application/json' : 'application/x-www-form-urlencoded';
 			}
 		} else {
 			$this->post_body = null;
@@ -121,6 +123,8 @@ class WPCOM_JSON_API {
 	}
 
 	function serve( $exit = true ) {
+		ini_set( 'display_errors', false );
+
 		$this->exit = (bool) $exit;
 
 		add_filter( 'home_url', array( $this, 'ensure_http_scheme_of_home_url' ), 10, 3 );
@@ -130,6 +134,11 @@ class WPCOM_JSON_API {
 		add_filter( 'comment_edit_pre', array( $this, 'comment_edit_pre' ) );
 
 		$initialization = $this->initialize();
+		if ( 'OPTIONS' == $this->method ) {
+			do_action( 'wpcom_json_api_options' );
+			return $this->output( 200, '', 'plain/text' );
+		}
+
 		if ( is_wp_error( $initialization ) ) {
 			$this->output_error( $initialization );
 			return;
@@ -148,6 +157,12 @@ class WPCOM_JSON_API {
 		$matching_endpoints = array();
 
 		if ( $is_help ) {
+			$origin = get_http_origin();
+
+			if ( !empty( $origin ) && 'GET' == $this->method ) {
+				header( 'Access-Control-Allow-Origin: ' . esc_url_raw( $origin ) );
+			}
+			
 			$this->path = substr( rtrim( $this->path, '/' ), 0, -5 );
 			// Show help for all matching endpoints regardless of method
 			$methods = $allowed_methods;
@@ -235,14 +250,14 @@ class WPCOM_JSON_API {
 			if ( 'json' === $help_content_type ) {
 				$docs = array();
 				foreach ( $matching_endpoints as $matching_endpoint ) {
-					if ( !$matching_endpoint[0]->in_testing || WPCOM_JSON_API__DEBUG )
+					if ( $matching_endpoint[0]->is_publicly_documentable() || WPCOM_JSON_API__DEBUG )
 						$docs[] = call_user_func( array( $matching_endpoint[0], 'generate_documentation' ) );
 				}
 				return $this->output( 200, $docs );
 			} else {
 				status_header( 200 );
 				foreach ( $matching_endpoints as $matching_endpoint ) {
-					if ( !$matching_endpoint[0]->in_testing || WPCOM_JSON_API__DEBUG )
+					if ( $matching_endpoint[0]->is_publicly_documentable() || WPCOM_JSON_API__DEBUG )
 						call_user_func( array( $matching_endpoint[0], 'document' ) );
 				}
 			}
@@ -257,13 +272,16 @@ class WPCOM_JSON_API {
 
 		$response = $this->process_request( $endpoint, $path_pieces );
 
-		if ( !$response ) {
+		if ( !$response && !is_array( $response ) ) {
 			return $this->output( 500, '', 'text/plain' );
 		} elseif ( is_wp_error( $response ) ) {
 			return $this->output_error( $response );
 		}
 
-		return $this->output( 200, $response );
+		$output_status_code = $this->output_status_code;
+		$this->set_output_status_code();
+
+		return $this->output( $output_status_code, $response );
 	}
 
 	function process_request( WPCOM_JSON_API_Endpoint $endpoint, $path_pieces ) {
@@ -282,6 +300,10 @@ class WPCOM_JSON_API {
 		$this->finish_request();
 	}
 
+	function set_output_status_code( $code = 200 ) {
+		$this->output_status_code = $code;
+	}
+
 	function output( $status_code, $response = null, $content_type = 'application/json' ) {
 		// In case output() was called before the callback returned
 		if ( $this->did_output ) {
@@ -290,6 +312,10 @@ class WPCOM_JSON_API {
 			return $content_type;
 		}
 		$this->did_output = true;
+
+		// 400s and 404s are allowed for all origins
+		if ( 404 == $status_code || 400 == $status_code )
+			header( 'Access-Control-Allow-Origin: *' );
 
 		if ( is_null( $response ) ) {
 			$response = new stdClass;
@@ -332,7 +358,11 @@ class WPCOM_JSON_API {
 		}
 
 		if ( $callback ) {
-			echo "$callback(";
+			// Mitigate Rosetta Flash [1] by setting the Content-Type-Options: nosniff header
+			// and by prepending the JSONP response with a JS comment.
+			// [1] http://miki.it/blog/2014/7/8/abusing-jsonp-with-rosetta-flash/
+			echo "/**/$callback(";
+
 		}
 		echo $this->json_encode( $response );
 		if ( $callback ) {
@@ -346,9 +376,7 @@ class WPCOM_JSON_API {
 		return $content_type;
 	}
 
-	function output_error( $error ) {
-		if ( function_exists( 'bump_stats_extra' ) )
-			bump_stats_extra( 'rest-api-errors', $this->token_details['client_id'] );
+	public static function serializable_error ( $error ) {
 
 		$status_code = $error->get_error_data();
 
@@ -362,17 +390,33 @@ class WPCOM_JSON_API {
 			'error'   => $error->get_error_code(),
 			'message' => $error->get_error_message(),
 		);
-		return $this->output( $status_code, $response );
+		return array(
+			'status_code' => $status_code,
+			'errors' => $response
+		);
+	}
+
+	function output_error( $error ) {
+		if ( function_exists( 'bump_stats_extra' ) )
+			bump_stats_extra( 'rest-api-errors', $this->token_details['client_id'] );
+
+		$error_response = $this->serializable_error( $error );
+
+		return $this->output( $error_response[ 'status_code'], $error_response['errors'] );
 	}
 
 	function filter_fields( $response ) {
-		if ( empty( $this->query['fields'] ) || ! empty( $response['error'] ) || ! empty( $this->endpoint->custom_fields_filtering ) )
+		if ( empty( $this->query['fields'] ) || ( is_array( $response ) && ! empty( $response['error'] ) ) || ! empty( $this->endpoint->custom_fields_filtering ) )
 			return $response;
 
 		$fields = array_map( 'trim', explode( ',', $this->query['fields'] ) );
 
+		if ( is_object( $response ) ) {
+			$response = (array) $response;
+		}
+
 		$has_filtered = false;
-		if ( empty( $response['ID'] ) ) {
+		if ( is_array( $response ) && empty( $response['ID'] ) ) {
 			$keys_to_filter = array(
 				'categories',
 				'comments',
@@ -393,23 +437,27 @@ class WPCOM_JSON_API {
 			);
 
 			foreach ( $keys_to_filter as $key_to_filter ) {
-				if ( empty( $response[ $key_to_filter ] ) || $has_filtered )
+				if ( ! isset( $response[ $key_to_filter ] ) || $has_filtered )
 					continue;
 
 				foreach ( $response[ $key_to_filter ] as $key => $values ) {
 					if ( is_object( $values ) ) {
 						$response[ $key_to_filter ][ $key ] = (object) array_intersect_key( (array) $values, array_flip( $fields ) );
-						$has_filtered = true;
 					} elseif ( is_array( $values ) ) {
 						$response[ $key_to_filter ][ $key ] = array_intersect_key( $values, array_flip( $fields ) );
-						$has_filtered = true;
 					}
 				}
+
+				$has_filtered = true;
 			}
 		}
 
 		if ( ! $has_filtered ) {
-			$response = array_intersect_key( $response, array_flip( $fields ) );
+			if ( is_object( $response ) ) {
+				$response = (object) array_intersect_key( (array) $response, array_flip( $fields ) );
+			} else if ( is_array( $response ) ) {
+				$response = array_intersect_key( $response, array_flip( $fields ) );
+			}
 		}
 
 		return $response;

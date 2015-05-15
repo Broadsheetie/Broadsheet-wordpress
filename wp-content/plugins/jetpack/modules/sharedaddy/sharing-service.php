@@ -39,12 +39,13 @@ class Sharing_Service {
 	/**
 	 * Gets a list of all available service names and classes
 	 */
-	private function get_all_services() {
+	public function get_all_services( $include_custom = true ) {
 		// Default services
+		// if you update this list, please update the REST API tests
+		// in bin/tests/api/suites/SharingTest.php
 		$services = array(
 			'email'         => 'Share_Email',
 			'print'         => 'Share_Print',
-			'digg'          => 'Share_Digg',
 			'facebook'      => 'Share_Facebook',
 			'linkedin'      => 'Share_LinkedIn',
 			'reddit'        => 'Share_Reddit',
@@ -57,10 +58,12 @@ class Sharing_Service {
 			'pocket'        => 'Share_Pocket',
 		);
 
-		// Add any custom services in
-		$options = $this->get_global_options();
-		foreach ( (array)$options['custom'] AS $custom_id ) {
-			$services[$custom_id] = 'Share_Custom';
+		if ( $include_custom ) {
+			// Add any custom services in
+			$options = $this->get_global_options();
+			foreach ( (array) $options['custom'] AS $custom_id ) {
+				$services[$custom_id] = 'Share_Custom';
+			}
 		}
 
 		return apply_filters( 'sharing_services', $services );
@@ -81,6 +84,9 @@ class Sharing_Service {
 
 			// Add a new custom service
 			$options['global']['custom'][] = $service_id;
+			if ( false !== $this->global ) {
+				$this->global['custom'][] = $service_id;
+			}
 
 			update_option( 'sharing-options', $options );
 
@@ -400,12 +406,26 @@ function sharing_register_post_for_share_counts( $post_id ) {
 	$jetpack_sharing_counts[ (int) $post_id ] = get_permalink( $post_id );
 }
 
+function sharing_maybe_enqueue_scripts() {
+	$sharer          = new Sharing_Service();
+	$global_options  = $sharer->get_global_options();
+
+	$enqueue         = false;
+	if ( is_singular() && in_array( get_post_type(), $global_options['show'] ) ) {
+		$enqueue = true;
+	} elseif ( in_array( 'index', $global_options['show'] ) && ( is_home() || is_front_page() || is_archive() || is_search() || in_array( get_post_type(), $global_options['show'] ) ) ) {
+		$enqueue = true;
+	}
+
+	return (bool) apply_filters( 'sharing_enqueue_scripts', $enqueue );
+}
+
 function sharing_add_footer() {
 	global $jetpack_sharing_counts;
 
-	if ( apply_filters( 'sharing_js', true ) ) {
+	if ( apply_filters( 'sharing_js', true ) && sharing_maybe_enqueue_scripts() ) {
 
-		if ( is_array( $jetpack_sharing_counts ) && count( $jetpack_sharing_counts ) ) :
+		if ( apply_filters( 'jetpack_sharing_counts', true ) && is_array( $jetpack_sharing_counts ) && count( $jetpack_sharing_counts ) ) :
 			$sharing_post_urls = array_filter( $jetpack_sharing_counts );
 			if ( $sharing_post_urls ) :
 ?>
@@ -418,8 +438,11 @@ function sharing_add_footer() {
 		endif;
 
 		wp_enqueue_script( 'sharing-js' );
-		$recaptcha__options = array( 'lang' => get_base_recaptcha_lang_code() );
-		wp_localize_script('sharing-js', 'recaptcha_options', $recaptcha__options);
+		$sharing_js_options = array(
+			'lang'   => get_base_recaptcha_lang_code(),
+			'counts' => apply_filters( 'jetpack_sharing_counts', true )
+		);
+		wp_localize_script( 'sharing-js', 'sharing_js_options', $sharing_js_options);
 	}
 
 	$sharer = new Sharing_Service();
@@ -437,11 +460,16 @@ function sharing_add_header() {
 		$service->display_header();
 	}
 
-	if ( count( $enabled['all'] ) > 0 ) {
-		wp_enqueue_style( 'sharedaddy', plugin_dir_url( __FILE__ ) .'sharing.css', array(), JETPACK__VERSION );
-		wp_enqueue_style( 'genericons' );
+	if ( count( $enabled['all'] ) > 0 && sharing_maybe_enqueue_scripts() ) {
+		// @todo: Remove this opt-out filter in the future
+		if ( ( ! defined( 'IS_WPCOM' ) ) || ( ! IS_WPCOM ) || apply_filters( 'wpl_sharing_2014_1', true ) ) {
+			wp_enqueue_style( 'sharedaddy', plugin_dir_url( __FILE__ ) .'sharing.css', array(), JETPACK__VERSION );
+			wp_enqueue_style( 'genericons' );
+		} else {
+			wp_enqueue_style( 'sharedaddy', plugin_dir_url( __FILE__ ) .'sharing-legacy.css', array(), JETPACK__VERSION );
+		}
 	}
-			
+
 }
 add_action( 'wp_head', 'sharing_add_header', 1 );
 
@@ -466,7 +494,7 @@ function sharing_display( $text = '', $echo = false ) {
 	if ( empty( $post ) )
 		return $text;
 
-	if ( is_preview() ) {
+	if ( is_preview() || is_admin() ) {
 		return $text;
 	}
 
@@ -596,7 +624,7 @@ function sharing_display( $text = '', $echo = false ) {
 			$sharing_content .= '</div></div></div>';
 
 			// Register our JS
-			wp_register_script( 'sharing-js', plugin_dir_url( __FILE__ ).'sharing.js', array( 'jquery' ), '20121205' );
+			wp_register_script( 'sharing-js', plugin_dir_url( __FILE__ ).'sharing.js', array( 'jquery' ), '20140920' );
 			add_action( 'wp_footer', 'sharing_add_footer' );
 		}
 	}

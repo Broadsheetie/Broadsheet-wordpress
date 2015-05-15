@@ -1,16 +1,15 @@
 <?php
+
   /*
   Plugin Name: WP images lazy loading
   Plugin URI: http://www.petrichorpost.com
   Description: a WordPress optimiztion plugin to enable jQuery image lazy loading.
-  Version: 1.2.3
+  Version: 1.2.6
   Author: Petrichorpost
   Author URI: http://www.petrichorpost.com
   */
 
 class jQueryLazyLoad {
-	public static $has_skipped_first = false;
-	
 	var $do_footer = false;
 
 	function __construct() {
@@ -35,7 +34,7 @@ EOF;
 			'jquery_lazy_load',
 			plugins_url('/js/jquery.lazyload.min.js', __FILE__),
 			array('jquery'),
-			'1.9.1' // version of the lazyload script from https://github.com/tuupola/jquery_lazyload
+			'1.9.3' // version of the lazyload script from https://github.com/tuupola/jquery_lazyload
 		);
 	}
 
@@ -48,11 +47,6 @@ EOF;
 		// set flag indicating there are images to be replaced
 		$this->do_footer = true;
 
-		if (!self::$has_skipped_first) {
-			self::$has_skipped_first = true;
-			return $matches[0];
-		}
-		
 		// alter original img tag:
 		//   - add empty class attribute if no existing class attribute
 		//   - set src to placeholder image
@@ -60,7 +54,7 @@ EOF;
 		if (!preg_match('/class\s*=\s*"/i', $matches[0])) {
 			$class_attr = 'class="" ';
 		}
-		$replacement = $matches[1] . $class_attr . 'src="' . plugins_url('/images/white.gif', __FILE__) . '" data-original' . substr($matches[2], 3) . $matches[3];
+		$replacement = $matches[1] . $class_attr . 'src="' . plugins_url('/images/grey.gif', __FILE__) . '" data-original' . substr($matches[2], 3) . $matches[3];
 
 		// add "lazy" class to existing class attribute
 		$replacement = preg_replace('/class\s*=\s*"/i', 'class="lazy ', $replacement);
@@ -78,19 +72,7 @@ EOF;
 		echo <<<EOF
 <script type="text/javascript">
 (function($){
-  $("img.lazy").show().lazyload({effect: "fadeIn", threshold : $(window).height()});
-  
-  $(function() {
-    $("img.lazy").lazyload({
-        event : "sporty"
-    });
-});
-
-$(window).bind("load", function() {
-    var timeout = setTimeout(function() {
-        $("img.lazy").trigger("sporty")
-    }, 5000);
-});
+  $("img.lazy").show().lazyload({effect: "fadeIn"});
 })(jQuery);
 </script>
 
@@ -98,8 +80,6 @@ EOF;
 	}
 }
 
-if (!isset($_COOKIE["no_lazy_load"]))
-{
-	$jQueryLazyLoad = new jQueryLazyLoad();
-}
+new jQueryLazyLoad();
+
 ?>

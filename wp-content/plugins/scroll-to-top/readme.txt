@@ -1,10 +1,10 @@
 === Scroll to Top ===
 Contributors: Rafael Cirolini
-Donate link: http://cirolini.com.br/
+Donate link: http://www.soumae.org/
 Tags: scroll to top, back to top, jquery
 Requires at least: 2.9.2
-Tested up to: 2.9.2
-Stable tag: 2.0
+Tested up to: 4.0
+Stable tag: 2.1
 
 Creates a floating box centered in the footer of your site that, and when clicked gently roll the site to the top.
 
@@ -43,10 +43,9 @@ Implementation of basic functionality
 
 == CREDIT ==
 
-This plugin was developed by Rafael Cirolini - http://www.geniusti.com.br
+This plugin was developed by Rafael Cirolini - http://www.soumae.org/scroll-to-top/
 
 == CONTACT ==
 
 Rafael Cirolini
-http://www.geniusdeveloper.com.br
-http://www.geniusti.com.br
+http://www.soumae.org/scroll-to-top/
