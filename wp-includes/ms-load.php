@@ -29,12 +29,12 @@ function is_subdomain_install() {
  * Returns array of network plugin files to be included in global scope.
  *
  * The default directory is wp-content/plugins. To change the default directory
- * manually, define <code>WP_PLUGIN_DIR</code> and <code>WP_PLUGIN_URL</code>
- * in wp-config.php.
+ * manually, define `WP_PLUGIN_DIR` and `WP_PLUGIN_URL` in `wp-config.php`.
  *
  * @access private
  * @since 3.1.0
- * @return array Files to include
+ *
+ * @return array Files to include.
  */
 function wp_get_active_network_plugins() {
 	$active_plugins = (array) get_site_option( 'active_sitewide_plugins', array() );
@@ -92,7 +92,7 @@ function ms_site_check() {
 		if ( file_exists( WP_CONTENT_DIR . '/blog-deleted.php' ) )
 			return WP_CONTENT_DIR . '/blog-deleted.php';
 		else
-			wp_die( __( 'This user has elected to delete their account and the content is no longer available.' ), '', array( 'response' => 410 ) );
+			wp_die( __( 'This site is no longer available.' ), '', array( 'response' => 410 ) );
 	}
 
 	if ( '2' == $blog->deleted ) {
@@ -125,7 +125,7 @@ function ms_site_check() {
 function get_network_by_path( $domain, $path, $segments = null ) {
 	global $wpdb;
 
-	$domains = $exact_domains = array( $domain );
+	$domains = array( $domain );
 	$pieces = explode( '.', $domain );
 
 	/*
@@ -308,6 +308,8 @@ function get_site_by_path( $domain, $path, $segments = null ) {
 		$path_segments = array_slice( $path_segments, 0, $segments );
 	}
 
+	$paths = array();
+
 	while ( count( $path_segments ) ) {
 		$paths[] = '/' . implode( '/', $path_segments ) . '/';
 		array_pop( $path_segments );
@@ -393,20 +395,35 @@ function get_site_by_path( $domain, $path, $segments = null ) {
 function ms_not_installed() {
 	global $wpdb, $domain, $path;
 
+	if ( ! is_admin() ) {
+		dead_db();
+	}
+
 	wp_load_translations_early();
 
 	$title = __( 'Error establishing a database connection' );
+
 	$msg  = '<h1>' . $title . '</h1>';
-	if ( ! is_admin() )
-		die( $msg );
 	$msg .= '<p>' . __( 'If your site does not display, please contact the owner of this network.' ) . '';
 	$msg .= ' ' . __( 'If you are the owner of this network please check that MySQL is running properly and all tables are error free.' ) . '</p>';
-	if ( ! $wpdb->get_var( "SHOW TABLES LIKE '$wpdb->site'" ) )
-		$msg .= '<p>' . sprintf( __( '<strong>Database tables are missing.</strong> This means that MySQL is not running, WordPress was not installed properly, or someone deleted <code>%s</code>. You really should look at your database now.' ), $wpdb->site ) . '</p>';
-	else
-		$msg .= '<p>' . sprintf( __( '<strong>Could not find site <code>%1$s</code>.</strong> Searched for table <code>%2$s</code> in database <code>%3$s</code>. Is that right?' ), rtrim( $domain . $path, '/' ), $wpdb->blogs, DB_NAME ) . '</p>';
+	$query = $wpdb->prepare( "SHOW TABLES LIKE %s", $wpdb->esc_like( $wpdb->site ) );
+	if ( ! $wpdb->get_var( $query ) ) {
+		$msg .= '<p>' . sprintf(
+			/* translators: %s: table name */
+			__( '<strong>Database tables are missing.</strong> This means that MySQL is not running, WordPress was not installed properly, or someone deleted %s. You really should look at your database now.' ),
+			'<code>' . $wpdb->site . '</code>'
+		) . '</p>';
+	} else {
+		$msg .= '<p>' . sprintf(
+			/* translators: 1: site url, 2: table name, 3: database name */
+			__( '<strong>Could not find site %1$s.</strong> Searched for table %2$s in database %3$s. Is that right?' ),
+			'<code>' . rtrim( $domain . $path, '/' ) . '</code>',
+			'<code>' . $wpdb->blogs . '</code>',
+			'<code>' . DB_NAME . '</code>'
+		) . '</p>';
+	}
 	$msg .= '<p><strong>' . __( 'What do I do now?' ) . '</strong> ';
-	$msg .= __( 'Read the <a target="_blank" href="http://codex.wordpress.org/Debugging_a_WordPress_Network">bug report</a> page. Some of the guidelines there may help you figure out what went wrong.' );
+	$msg .= __( 'Read the <a target="_blank" href="https://codex.wordpress.org/Debugging_a_WordPress_Network">bug report</a> page. Some of the guidelines there may help you figure out what went wrong.' );
 	$msg .= ' ' . __( 'If you&#8217;re still stuck with this message, then check that your database contains the following tables:' ) . '</p><ul>';
 	foreach ( $wpdb->tables('global') as $t => $table ) {
 		if ( 'sitecategories' == $t )
@@ -415,7 +432,7 @@ function ms_not_installed() {
 	}
 	$msg .= '</ul>';
 
-	wp_die( $msg, $title );
+	wp_die( $msg, $title, array( 'response' => 500 ) );
 }
 
 /**
@@ -426,13 +443,13 @@ function ms_not_installed() {
  *
  * @access private
  * @since 3.0.0
- * @deprecated 3.9.0
+ * @deprecated 3.9.0 Use get_current_site() instead.
  *
  * @param object $current_site
  * @return object
  */
 function get_current_site_name( $current_site ) {
-	_deprecated_function( __FUNCTION__, '3.9' );
+	_deprecated_function( __FUNCTION__, '3.9', 'get_current_site()' );
 	return $current_site;
 }
 
