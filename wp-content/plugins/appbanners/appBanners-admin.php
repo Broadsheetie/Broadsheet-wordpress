@@ -4,7 +4,7 @@
  * Administration functionality for App Banners Plugin
  * Author: Matt Pramschufer of E-Moxie
  * URL: www.emoxie.com
- * Date: 10/2/2013
+ * Date: 2/18/2015
  */
 
 define('APP_BANNERS_ID', 'app-banners-plugin-options');
@@ -32,7 +32,9 @@ class App_Banners_Admin {
         register_setting(APP_BANNERS_ID . '_options', 'APP_BANNERS_iconGloss');
         register_setting(APP_BANNERS_ID . '_options', 'APP_BANNERS_inAppStore');
         register_setting(APP_BANNERS_ID . '_options', 'APP_BANNERS_inGooglePlay');
-        register_setting(APP_BANNERS_ID . '_options', 'APP_BANNERS_appStoreLanguage');
+	    register_setting(APP_BANNERS_ID . '_options', 'APP_BANNERS_appStoreLanguage');
+	    register_setting(APP_BANNERS_ID . '_options', 'APP_BANNERS_ms_application_id');
+	    register_setting(APP_BANNERS_ID . '_options', 'APP_BANNERS_ms_application_package_name');
     }
 
     public static function menu() {
@@ -46,7 +48,6 @@ class App_Banners_Admin {
         }
 
         $plugin_id = APP_BANNERS_ID;
-        // display options page
         $appleID = get_option('APP_BANNERS_apple_id');
         $androidID = get_option('APP_BANNERS_android_id');
         $author = get_option('APP_BANNERS_author');
@@ -62,6 +63,8 @@ class App_Banners_Admin {
         $inAppStore = get_option('APP_BANNERS_inAppStore');
         $inGooglePlay = get_option('APP_BANNERS_inGooglePlay');
         $appStoreLanguage = get_option('APP_BANNERS_appStoreLanguage');
+	    $msApplicationID = get_option('APP_BANNERS_ms_application_id');
+	    $msApplicationPackageName= get_option('APP_BANNERS_ms_application_package_name');
 
         require_once dirname(__FILE__) . '/tpl/admin-options.php';
     }
