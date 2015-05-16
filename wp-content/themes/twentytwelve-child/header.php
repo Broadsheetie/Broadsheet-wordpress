@@ -59,18 +59,17 @@ googletag.cmd.push(function() {
     pageWidth  = headerDiv.offsetWidth;
 
     if (pageWidth >= 728) {
-        googletag.defineSlot('/20132202/BroadsheetLeaderboard', [728, 90], 'div-gpt-ad-1348854553033-0').addService(googletag.pubads());
-		googletag.defineSlot('/20132202/BroadsheetBillboard', [970, 250], 'div-gpt-ad-1376770461445-0').addService(googletag.pubads());
         googletag.defineSlot('/20132202/Broadsheet_Filmstrip', [300, 600], 'div-gpt-ad-1373919543635-0').addService(googletag.pubads());
         googletag.defineSlot('/20132202/BroadsheetTakeover', [1, 1], 'div-gpt-ad-1349021718141-3').addService(googletag.pubads());
+        googletag.defineSlot('/20132202/BS-1-HP-Flex-Billboard', [[728, 90], [970, 250], [970, 90]], 'div-gpt-ad-1431772366166-2').addService(googletag.pubads());
     } else {
-googletag.defineSlot('/20132202/Broadsheet_Mini_Leaderboard', [320, 50], 'div-gpt-ad-1397509779716-0').addService(googletag.pubads());
+		googletag.defineSlot('/20132202/Broadsheet_Mini_Leaderboard', [320, 50], 'div-gpt-ad-1397509779716-0').addService(googletag.pubads());
     }
-googletag.defineSlot('/20132202/BroadsheetMPU', [300, 250], 'div-gpt-ad-1348854553033-1').addService(googletag.pubads());
-googletag.defineSlot('/20132202/BroadsheetMPU2', [300, 250], 'div-gpt-ad-1392892360823-0').addService(googletag.pubads());
-googletag.pubads().enableSingleRequest();
-googletag.pubads().collapseEmptyDivs();
-googletag.enableServices();
+	googletag.defineSlot('/20132202/BroadsheetMPU', [300, 250], 'div-gpt-ad-1348854553033-1').addService(googletag.pubads());
+	googletag.defineSlot('/20132202/BroadsheetMPU2', [300, 250], 'div-gpt-ad-1392892360823-0').addService(googletag.pubads());
+	googletag.pubads().enableSingleRequest();
+	googletag.pubads().collapseEmptyDivs();
+	googletag.enableServices();
 });
 </script>
 <script language="javascript" type="text/javascript" async="async" src="http://widgets.kiosked.com/sniffer/get-script/sign/35d9b8879227fbd7ec7339c78664c02c/albumid/10541/co/10913.js"></script>
@@ -88,16 +87,10 @@ googletag.cmd.push(function() { googletag.display('div-gpt-ad-1397509779716-0');
 <div id="page" class="hfeed site">
 	<header id="masthead" class="site-header" role="banner">
         <center>
-			<!-- BroadsheetLeaderboard -->
-			<div id='div-gpt-ad-1348854553033-0' style='width:728px; height:90px;display:none'>
+			<!-- /20132202/BS-1-HP-Flex-Billboard -->
+			<div id='div-gpt-ad-1431772366166-2'>
 			<script type='text/javascript'>
-			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1348854553033-0'); });
-			</script>
-			</div>
-			<!-- BroadsheetBillboard -->
-			<div id='div-gpt-ad-1376770461445-0' style='width:970px; display:none'>
-			<script type='text/javascript'>
-			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1376770461445-0'); });
+			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1431772366166-2'); });
 			</script>
 			</div>
         </center>
