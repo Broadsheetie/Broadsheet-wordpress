@@ -88,7 +88,7 @@ googletag.cmd.push(function() { googletag.display('div-gpt-ad-1397509779716-0');
 	<header id="masthead" class="site-header" role="banner">
         <center>
 			<!-- /20132202/BS-1-HP-Flex-Billboard -->
-			<div id='div-gpt-ad-1431772366166-2'>
+			<div id='div-gpt-ad-1431772366166-2' style='display:none'>
 			<script type='text/javascript'>
 			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1431772366166-2'); });
 			</script>
